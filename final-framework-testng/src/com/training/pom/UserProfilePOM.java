@@ -47,6 +47,10 @@ private WebElement saveChgbtn;
 @FindBy(xpath="//a[@class='current']")
 private WebElement myProfile;
 
+@FindBy(xpath="//*[@id=\'header\']/div[2]/div/div/div/div")
+private WebElement logout;
+
+
 public void updateDetails(String title, String phone)
 {  
 	this.agentTitle.clear();
@@ -58,6 +62,8 @@ public void updateDetails(String title, String phone)
 	String expected="Your profile has been updated.";
 	String actual=element.getText();
 	assertEquals(actual, expected);
+	this.logoutLnk.click();
+	
 }
 public void validateScreen()
 {
@@ -68,5 +74,9 @@ public void validateScreen()
 	Assert.verify(this.changepwdLnk.isDisplayed());
 	Assert.verify(this.logoutLnk.isDisplayed());
 }
+public void logout()
+{
+	this.logoutLnk.click();
+	}
 
 }

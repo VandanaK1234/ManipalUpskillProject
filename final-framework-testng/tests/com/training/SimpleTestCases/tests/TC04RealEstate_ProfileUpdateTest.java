@@ -85,25 +85,36 @@ public class TC04RealEstate_ProfileUpdateTest {
 	@AfterMethod
 	public void tearDown() throws Exception {
 		Thread.sleep(1000);
-		String userid=properties.getProperty("userID");
+		/*
 		//Login to admin page and  delete the registered user.
 				String	adminUserName=properties.getProperty("adminID");
 				String adminPwd=properties.getProperty("adminpwd");
-		driver.get(properties.getProperty("adminURL"));
-		adminloginpg.adminLoginTest(adminUserName, adminPwd);
+				adminloginpg.adminLoginTest(adminUserName, adminPwd);
 		//deleting the user from admin profile page
 	admindprofilepg.userDeletion(userid);
-		//cleaning up the browser
+		//cleaning up the browser*/
 		driver.quit();
 	}
 		@Test(dataProvider = "xlsx-input-sheet2", dataProviderClass = LoginDataProviders.class)
-	     public void updateProfiledetails (String emailId,String pwd) throws InterruptedException
+	     public void updateProfiledetails (String emailId,String pwd) throws InterruptedException, IOException
 		      {
-			
+			homepgpom.loginOrRegisterlnktest();
+			Thread.sleep(5000);
+			//Enter user details for Logging in to application
+			loginpgpom.loginTest(emailId,pwd);
 			userprofilepom.validateScreen();
 			userprofilepom.updateDetails("Testing","123456");
+			Thread.sleep(2000);
+			driver.navigate().to("http://realestatem1.upskills.in/admin");
 			Thread.sleep(4000);
-			driver.get(properties.getProperty("adminURL"));
+			String	adminUserName=properties.getProperty("adminID");
+			String adminPwd=properties.getProperty("adminpwd");
+			adminloginpg.adminLoginTest(adminUserName, adminPwd);
+	//deleting the user from admin profile page
+			String userid=properties.getProperty("userID");
+admindprofilepg.userDeletion(userid);
+	//cleaning up the browser
+	
 			
 		      }
 	

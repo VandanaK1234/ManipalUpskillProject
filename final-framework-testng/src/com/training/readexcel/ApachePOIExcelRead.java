@@ -157,7 +157,7 @@ public class ApachePOIExcelRead {
 	}
 
 	public static void main(String[] args) {
-		String fileName = "C:\\Users\\VandanaKapoor\\git\\ManipalUpskillProject_\\final-framework-testng\\resources\\RetailTestcasesData.xlsx";
+		String fileName = "C:\\Users\\VandanaKapoor\\git\\ManipalUpskillProject\\final-framework-testng\\resources\\RetailTestcasesData.xlsx";
 		
 		for(String [] temp : new ApachePOIExcelRead().getExcelContentsheet1(fileName)){
 			for(String  tt : temp){

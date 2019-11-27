@@ -96,7 +96,7 @@ public class DashboardAdminPOM {
     	FileUtils.copyFile(srcFile, DestFile);
 		
 	}
-	public void pwdGenerate(String userId)
+	public void pwdGenerate(String userId) throws InterruptedException
 	{
 		this.usersLnk.click();
 		//Searching the particular user 
@@ -114,6 +114,7 @@ public class DashboardAdminPOM {
     	element= driver.findElement(By.xpath("//*[@id='wp-admin-bar-my-account']/a/img"));
     	action.moveToElement(element).build().perform();
     	this.logout.click();
+    	Thread.sleep(2000);
     	//String expected="User updated";
 		//String actual=(driver.findElement(By.xpath("//strong[contains(text(),'User updated.')]"))).getText();
 	//	assertEquals(expected,actual);

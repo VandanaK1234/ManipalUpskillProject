@@ -93,21 +93,12 @@ public class TC02RealEstate_LoginTest {
 	public void tearDown() throws Exception {
 		Thread.sleep(1000);
 		//Read userId for deletion from repository
-				String userid=properties.getProperty("userID");
-		//Login to admin page and  delete the registered user.
-				String	adminUserName=properties.getProperty("adminID");
-				String adminPwd=properties.getProperty("adminpwd");
-		driver.get(properties.getProperty("adminURL"));
-	
-		adminloginpg.adminLoginTest(adminUserName, adminPwd);
-			//deleting the user from admin profile page
-		admindprofilepg.userDeletion(userid);
-		//cleaning up the browser
+				
 		driver.quit();
 				
 	}
 	@Test (dataProvider = "xlsx-input-sheet2", dataProviderClass = LoginDataProviders.class)
-	public void validLoginTest(String emailId,String password) throws InterruptedException {
+	public void validLoginTest(String emailId,String password) throws InterruptedException, IOException {
 		//Validating if Login/Register link is displaying on home page and clicking that
 		homepgpom.loginOrRegisterlnktest();
 		Thread.sleep(5000);
@@ -115,6 +106,19 @@ public class TC02RealEstate_LoginTest {
 		baseloginpom.loginTest(emailId,password);
 		//Validate if user is successfully logged and can view his Profile page
 		userprofile.validateScreen();
+		userprofile.logout();
+		Thread.sleep(2000);
+		driver.navigate().to("http://realestatem1.upskills.in/admin");
+		Thread.sleep(2000);
+		String userid=properties.getProperty("userID");
+		//Login to admin page and  delete the registered user.
+				String	adminUserName=properties.getProperty("adminID");
+				String adminPwd=properties.getProperty("adminpwd");
 		
+	
+		adminloginpg.adminLoginTest(adminUserName, adminPwd);
+			//deleting the user from admin profile page
+		admindprofilepg.userDeletion(userid);
+		//cleaning up the browser
 	}
 }
