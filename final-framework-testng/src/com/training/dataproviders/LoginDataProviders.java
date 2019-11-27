@@ -30,10 +30,16 @@ public class LoginDataProviders {
 		return result;
 	}
 	
-	@DataProvider(name = "excel-inputs")
-	public Object[][] getExcelData(){
-		String fileName ="C:/Users/Naveen/Desktop/Testing.xlsx"; 
-		return new ApachePOIExcelRead().getExcelContent(fileName); 
+	@DataProvider(name = "xlsx-input-sheet1")
+	public Object[][] getExcelData1stsheet()
+	{
+		String fileName ="C:\\Users\\VandanaKapoor\\git\\ManipalUpskillProject_\\final-framework-testng\\resources\\RetailTestcasesData.xlsx"; 
+		return new ApachePOIExcelRead().getExcelContentsheet1(fileName); 
+	}
+		@DataProvider(name = "xlsx-input-sheet2")
+		public Object[][] getExcelData2ndsheet(){
+			String fileName ="C:\\Users\\VandanaKapoor\\git\\ManipalUpskillProject_\\final-framework-testng\\resources\\RetailTestcasesData.xlsx"; 
+			return new ApachePOIExcelRead().getExcelContentsheet2(fileName);
 	}
 	
 	@DataProvider(name = "xls-inputs")
