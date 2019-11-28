@@ -94,9 +94,9 @@ public class DashboardAdminPOM {
 		//Deleting that user
 		this.deleteBtn.click();
 		this.confirmDelete.click();
-	//String expected="User deleted";
-	//	String actual=(driver.findElement(By.xpath("/html/body/div/div[2]/div[2]/div[1]/div[3]/div[2]/p"))).getText();
-	//	assertEquals(expected,actual);
+	    String expected="User deleted";
+		String actual=(driver.findElement(By.xpath("/html/body/div/div[2]/div[2]/div[1]/div[3]/div[2]/p"))).getText();
+		Assert.verify(actual.contains(expected));
 		
 		//Below code checks if that user still exists in user list
 		this.searchTxt.clear();
@@ -122,14 +122,13 @@ public class DashboardAdminPOM {
     	this.password.clear();
     	this.password.sendKeys("Chikchik@123");
     	this.updateUser.click();
-    	element= driver.findElement(By.xpath("//*[@id='wp-admin-bar-my-account']/a/img"));
+    	   	
+    	String expected="User updated";
+		String actual=(driver.findElement(By.xpath("//strong[contains(text(),'User updated.')]"))).getText();
+		Assert.verify(actual.contains(expected));
+		element= driver.findElement(By.xpath("//*[@id='wp-admin-bar-my-account']/a/img"));
     	action.moveToElement(element).build().perform();
     	this.logout.click();
-    	Thread.sleep(2000);
-    	//String expected="User updated";
-		//String actual=(driver.findElement(By.xpath("//strong[contains(text(),'User updated.')]"))).getText();
-	//	assertEquals(expected,actual);
-		
 		}
 	
 }

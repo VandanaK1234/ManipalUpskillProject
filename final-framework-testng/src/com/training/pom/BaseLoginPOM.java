@@ -53,7 +53,7 @@ private Actions action;
 		//Link takes time to load in page so adding wait time 
 		WebDriverWait wait = new WebDriverWait(driver, 5000);
 		WebElement element  = wait.until(
-				ExpectedConditions.elementToBeClickable(By.partialLinkText("Lost Your Password?")));
+		ExpectedConditions.elementToBeClickable(By.partialLinkText("Lost Your Password?")));
 		action=  new Actions(driver);
 		action.moveToElement(element).build().perform();
 		

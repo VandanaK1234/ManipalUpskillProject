@@ -90,8 +90,7 @@ public class TC02RealEstate_LoginTest {
 	
 	@AfterMethod
 	public void tearDown() throws Exception {
-		Thread.sleep(1000);
-		//Read userId for deletion from repository
+				//Read userId for deletion from repository
 		String userid=properties.getProperty("userID");
 		driver.navigate().to("http://realestatem1.upskills.in/admin");
 			//Login to admin page and  delete the registered user.
