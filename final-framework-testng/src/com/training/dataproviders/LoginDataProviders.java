@@ -1,6 +1,10 @@
 package com.training.dataproviders;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
 import org.testng.annotations.DataProvider;
 
@@ -31,15 +35,20 @@ public class LoginDataProviders {
 	}
 	
 	@DataProvider(name = "xlsx-input-sheet1")
-	public Object[][] getExcelData1stsheet()
-	{
-		String fileName ="C:\\Users\\VandanaKapoor\\git\\ManipalUpskillProject\\final-framework-testng\\resources\\RetailTestcasesData.xlsx"; 
-		return new ApachePOIExcelRead().getExcelContentsheet1(fileName); 
+	public Object[][] getExcelData1stsheet() throws IOException
+	{ Properties  properties = new Properties();
+	FileInputStream inStream = new FileInputStream("C:\\Users\\VandanaKapoor\\git\\ManipalUpskillProject\\final-framework-testng\\resources\\others.properties");
+	properties.load(inStream);
+		String path= properties.getProperty("dataFilePath");
+		return new ApachePOIExcelRead().getExcelContentsheet1(path); 
 	}
 		@DataProvider(name = "xlsx-input-sheet2")
-		public Object[][] getExcelData2ndsheet(){
-			String fileName ="C:\\Users\\VandanaKapoor\\git\\ManipalUpskillProject\\final-framework-testng\\resources\\RetailTestcasesData.xlsx"; 
-			return new ApachePOIExcelRead().getExcelContentsheet2(fileName);
+		public Object[][] getExcelData2ndsheet() throws IOException{
+			Properties  properties = new Properties();
+			FileInputStream inStream = new FileInputStream("C:\\Users\\VandanaKapoor\\git\\ManipalUpskillProject\\final-framework-testng\\resources\\others.properties");
+			properties.load(inStream);
+			String path= properties.getProperty("dataFilePath"); 
+			return new ApachePOIExcelRead().getExcelContentsheet2(path);
 	}
 	
 	@DataProvider(name = "xls-inputs")
