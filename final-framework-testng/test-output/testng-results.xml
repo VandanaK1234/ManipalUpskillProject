@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="109123" started-at="2019-11-28T12:47:28 IST" finished-at="2019-11-28T12:49:17 IST">
+  <suite name="Default suite" duration-ms="105736" started-at="2019-11-28T17:37:32 IST" finished-at="2019-11-28T17:39:18 IST">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="109123" started-at="2019-11-28T12:47:28 IST" finished-at="2019-11-28T12:49:17 IST">
-      <class name="com.training.SimpleTestCases.tests.TC04RealEstate_ProfileUpdateTest">
-        <test-method status="PASS" signature="setUpBeforeClass()[pri:0, instance:com.training.SimpleTestCases.tests.TC04RealEstate_ProfileUpdateTest@22a67b4]" name="setUpBeforeClass" is-config="true" duration-ms="13" started-at="2019-11-28T12:47:28 IST" finished-at="2019-11-28T12:47:28 IST">
+    <test name="Default test" duration-ms="105736" started-at="2019-11-28T17:37:32 IST" finished-at="2019-11-28T17:39:18 IST">
+      <class name="com.training.SimpleTestCases.tests.TC02RealEstate_LoginTest">
+        <test-method status="PASS" signature="setUpBeforeClass()[pri:0, instance:com.training.SimpleTestCases.tests.TC02RealEstate_LoginTest@22a67b4]" name="setUpBeforeClass" is-config="true" duration-ms="11" started-at="2019-11-28T17:37:32 IST" finished-at="2019-11-28T17:37:32 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpBeforeClass -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.training.SimpleTestCases.tests.TC04RealEstate_ProfileUpdateTest@22a67b4]" name="setUp" is-config="true" duration-ms="81621" started-at="2019-11-28T12:47:29 IST" finished-at="2019-11-28T12:48:50 IST">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.training.SimpleTestCases.tests.TC02RealEstate_LoginTest@22a67b4]" name="setUp" is-config="true" duration-ms="84455" started-at="2019-11-28T17:37:33 IST" finished-at="2019-11-28T17:38:57 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="updateProfiledetails(java.lang.String, java.lang.String)[pri:0, instance:com.training.SimpleTestCases.tests.TC04RealEstate_ProfileUpdateTest@22a67b4]" name="updateProfiledetails" duration-ms="10388" started-at="2019-11-28T12:48:50 IST" data-provider="xlsx-input-sheet2" finished-at="2019-11-28T12:49:01 IST">
+        <test-method status="PASS" signature="validLoginTest(java.lang.String, java.lang.String)[pri:0, instance:com.training.SimpleTestCases.tests.TC02RealEstate_LoginTest@22a67b4]" name="validLoginTest" duration-ms="6426" started-at="2019-11-28T17:38:57 IST" data-provider="xlsx-input-sheet2" finished-at="2019-11-28T17:39:04 IST">
           <params>
             <param index="0">
               <value>
@@ -30,12 +30,12 @@
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- updateProfiledetails -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.training.SimpleTestCases.tests.TC04RealEstate_ProfileUpdateTest@22a67b4]" name="tearDown" is-config="true" duration-ms="16215" started-at="2019-11-28T12:49:01 IST" finished-at="2019-11-28T12:49:17 IST">
+        </test-method> <!-- validLoginTest -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.training.SimpleTestCases.tests.TC02RealEstate_LoginTest@22a67b4]" name="tearDown" is-config="true" duration-ms="14250" started-at="2019-11-28T17:39:04 IST" finished-at="2019-11-28T17:39:18 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.training.SimpleTestCases.tests.TC04RealEstate_ProfileUpdateTest -->
+      </class> <!-- com.training.SimpleTestCases.tests.TC02RealEstate_LoginTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
