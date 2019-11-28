@@ -49,7 +49,6 @@ public class TC01RealEstate_RegisterUserTest {
 		//  Opening home page for Retail application in browser
 		driver.get(baseUrl);
 		//adding some wait time to load the page
-		Thread.sleep(3000);
 		registerationpg= new RegistrationPOM(driver);
 		adminloginpg=new AdminLoginPOM(driver);
 		admindprofilepg= new DashboardAdminPOM(driver);
@@ -57,8 +56,6 @@ public class TC01RealEstate_RegisterUserTest {
 	
 	@AfterMethod
 	public void tearDown() throws Exception {
-		Thread.sleep(1000);
-		driver.quit();
 		//Read userId for deletion from repository
 				String userid=properties.getProperty("userID");
 		//Login to admin page and  delete the registered user.
@@ -74,6 +71,7 @@ public class TC01RealEstate_RegisterUserTest {
 	@Test (dataProvider = "xlsx-input-sheet1", dataProviderClass = LoginDataProviders.class)
 	public void validLoginTest(String emailid,String firstName,String lastName) throws InterruptedException 
 	{   
+		
 		//Verify if Login/Register Link is being displayed on home page and click on that link
 		homepgpom.loginOrRegisterlnktest();
 		// Verifying field details on Registration screen

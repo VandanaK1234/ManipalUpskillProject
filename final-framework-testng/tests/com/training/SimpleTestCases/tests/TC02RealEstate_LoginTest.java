@@ -57,7 +57,6 @@ public class TC02RealEstate_LoginTest {
 		screenShot = new ScreenShot(driver); 
 		// open the base url of Retail application in browser
 		driver.get(baseUrl);
-		Thread.sleep(5000);
 		baseloginpom= new BaseLoginPOM(driver);
 		userprofile= new UserProfilePOM(driver);
 		registerationpg= new RegistrationPOM(driver);
@@ -82,10 +81,10 @@ public class TC02RealEstate_LoginTest {
 					adminloginpg.adminLoginTest(adminUserName, adminPwd);
 						//deleting the user from admin profile page
 				admindprofilepg.pwdGenerate(emailid);
-				Thread.sleep(2000);
+				
 					//cleaning up the browser
 				driver.navigate().to(baseUrl);
-				Thread.sleep(2000);
+				
 				
 	}
 	
@@ -93,25 +92,9 @@ public class TC02RealEstate_LoginTest {
 	public void tearDown() throws Exception {
 		Thread.sleep(1000);
 		//Read userId for deletion from repository
-				
-		driver.quit();
-				
-	}
-	@Test (dataProvider = "xlsx-input-sheet2", dataProviderClass = LoginDataProviders.class)
-	public void validLoginTest(String emailId,String password) throws InterruptedException, IOException {
-		//Validating if Login/Register link is displaying on home page and clicking that
-		homepgpom.loginOrRegisterlnktest();
-		Thread.sleep(5000);
-		//Enter user details for Logging in to application
-		baseloginpom.loginTest(emailId,password);
-		//Validate if user is successfully logged and can view his Profile page
-		userprofile.validateScreen();
-		userprofile.logout();
-		Thread.sleep(2000);
-		driver.navigate().to("http://realestatem1.upskills.in/admin");
-		Thread.sleep(2000);
 		String userid=properties.getProperty("userID");
-		//Login to admin page and  delete the registered user.
+		driver.navigate().to("http://realestatem1.upskills.in/admin");
+			//Login to admin page and  delete the registered user.
 				String	adminUserName=properties.getProperty("adminID");
 				String adminPwd=properties.getProperty("adminpwd");
 		
@@ -120,5 +103,19 @@ public class TC02RealEstate_LoginTest {
 			//deleting the user from admin profile page
 		admindprofilepg.userDeletion(userid);
 		//cleaning up the browser
+		driver.quit();
+				
+	}
+	@Test (dataProvider = "xlsx-input-sheet2", dataProviderClass = LoginDataProviders.class)
+	public void validLoginTest(String emailId,String password) throws InterruptedException, IOException {
+		//Validating if Login/Register link is displaying on home page and clicking that
+		homepgpom.loginOrRegisterlnktest();
+		
+		//Enter user details for Logging in to application
+		baseloginpom.loginTest(emailId,password);
+		//Validate if user is successfully logged and can view his Profile page
+		userprofile.validateScreen();
+		userprofile.logout();
+				
 	}
 }

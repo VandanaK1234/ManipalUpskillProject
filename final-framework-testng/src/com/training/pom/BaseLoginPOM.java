@@ -20,16 +20,19 @@ private Actions action;
 		this.driver = driver; 
 		PageFactory.initElements(driver, this);
 	}
-	
+	//User name  text in login screen
 	@FindBy(id="user_login")
 	private WebElement userName; 
 	
+	//Password text in login screen
 	@FindBy(id="user_pass")
 	private WebElement password;
 	
+	//Login button 
 	@FindBy(name="login")
 	private WebElement loginBtn; 
 	
+	//Lost ur pwd link to reset the pwd
 	@FindBy(linkText=" Lost Your Password?")
 	private WebElement lostPwdLnk; 
 	
@@ -47,6 +50,7 @@ private Actions action;
 	//Clicking the Lost password link to reset password
 	public void lostPwdLnkTest()
 	{   
+		//Link takes time to load in page so adding wait time 
 		WebDriverWait wait = new WebDriverWait(driver, 5000);
 		WebElement element  = wait.until(
 				ExpectedConditions.elementToBeClickable(By.partialLinkText("Lost Your Password?")));

@@ -12,14 +12,21 @@ private WebDriver driver;
 		this.driver = driver; 
 		PageFactory.initElements(driver, this);
 	}
+	
+	//admin loginn id text box
 	@FindBy(id="user_login")
 	private WebElement userName; 
 	
+	//admin pwd text box
 	@FindBy(id="user_pass")
 	private WebElement password;
 	
+	//login button
+	
 	@FindBy(name="login")
 	private WebElement loginBtn; 
+	
+	//admin login in application
 	public void adminLoginTest(String userName,String password)
 	{
 		this.userName.clear();

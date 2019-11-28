@@ -59,8 +59,7 @@ public class TC03RealEstate_lostPasswordTest {
 		//  Opening home page for Retail application in browser
 		driver.get(baseUrl);
 		//adding some wait time to load the page
-		Thread.sleep(3000);
-				   
+						   
 	  //Verify if Login/Register Link is being displayed on home page and click on that link
 		homepgpom.loginOrRegisterlnktest();
 		// Verifying field details on Registration screen
@@ -99,10 +98,10 @@ public class TC03RealEstate_lostPasswordTest {
 		
     //Clicking the Lost pwd link on login page
     loginpgpom.lostPwdLnkTest();
-    Thread.sleep(3000);
+   
     //Entering mail id and resetting the pwd.
     lostpwdpom.resetPwdTest(emailId);
-    Thread.sleep(3000);
+   
     
     TakesScreenshot scrShot =((TakesScreenshot)driver);
     File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);

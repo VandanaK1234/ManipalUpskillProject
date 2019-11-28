@@ -13,9 +13,12 @@ public class LostPasswordPOM {
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}
+	
+	//User login/mail id for user
 	@FindBy(id="user_login")
 	private WebElement user_login;
 	
+	//Reset pwd button
     @FindBy(name="submit")
     private WebElement resetPwdBtn;
     

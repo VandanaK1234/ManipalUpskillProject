@@ -28,29 +28,40 @@ public class DashboardAdminPOM {
 		this.driver=driver;
 		PageFactory.initElements(driver,this) ;
 	}
+	
+	//Dashboard header in dashboard of admin
 	@FindBy(xpath="//h1[contains(text(),'Dashboard')]")
 	WebElement header;
-
+	
+//Users link to view all users
 	@FindBy(xpath="//*[@id='menu-users']/a/div[3]")
 	WebElement usersLnk;
 	
+	//Search text box to search any user
 	@FindBy(xpath="//input[@id='user-search-input']")
 	WebElement searchTxt;
 	
+	//Delete button to delete any user
 	@FindBy(xpath="//a[@class='submitdelete']")
 	WebElement deleteBtn;
 	
+	//Edit button to edit the user details
 	@FindBy(xpath="//span[@class='edit']//a[contains(text(),'Edit')]")
 	WebElement editBtn;
 	
+	//Generatepwd button 
 	@FindBy(xpath="//*[@id=\'password\']/td/button")
 	WebElement pwdGenerateBtn;
 	
+	//Confirmation button for deleting the user
 	@FindBy(id="submit")
 	WebElement confirmDelete;
 	
+	//pwd text box 	
 	@FindBy(id="pass1-text")
 	WebElement password;
+	
+	//Submit button to update user details
 	
 	@FindBy(name="submit")
 	WebElement updateUser;

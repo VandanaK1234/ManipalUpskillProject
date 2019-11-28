@@ -27,21 +27,28 @@ public RegistrationPOM(WebDriver driver)
 	this.driver=driver;
 	PageFactory.initElements(driver,this) ;
 }
+
+//Email id of user to be registered
 @FindBy(id="email")
 private WebElement emailid;
 
+//First name of user
 @FindBy(id="first-name")
 private WebElement firstNm;
 
+//Last name of user
 @FindBy(id="last-name")
 private WebElement lastNm;
 
+//Sumit button to register the user details
 @FindBy(xpath="//input[@name='submit']")
 private WebElement registerBtn;
 
+//Registration tab link
  @FindBy(xpath="/html[1]/body[1]/div[1]/div[4]/div[1]/article[1]/div[1]/div[1]/div[1]/ul[1]/li[2]/a[1]")
  private WebElement registerLnk;
 
+ //Registering the new user
 public void RegisterUser(String emailid,String firstNM,String lastNM) throws InterruptedException
 { 
 	
@@ -54,6 +61,8 @@ public void RegisterUser(String emailid,String firstNM,String lastNM) throws Int
 	this.registerBtn.click();
 	Thread.sleep(3000);
 }
+
+//Validating that users details are correct and is registered successfully
 public void validLoginDetails()
 {
 	WebElement element=driver.findElement(By.xpath("//*[@id='post-133']/div/div/div/div[1]/p"));
@@ -62,6 +71,7 @@ public void validLoginDetails()
 	assertEquals(actual, expected);
 		
 }
+//Validating that already registered user is not able to register again
 public void InvalidLoginDetails()
 {
 	WebElement element=driver.findElement(By.xpath("//*[@id='post-133']/div/div/div/div[1]/p"));
@@ -71,6 +81,8 @@ public void InvalidLoginDetails()
 	assertEquals(actual, expected);
 		
 }
+
+//Verifying all the elements on Registration screen 
 	public void validateRegistrationScreen()
 	{    this.registerLnk.click();
 		Assert.verify((this.emailid.isDisplayed()&&(this.emailid.isEnabled())));

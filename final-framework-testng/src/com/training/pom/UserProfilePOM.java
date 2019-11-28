@@ -67,7 +67,7 @@ public void updateDetails(String title, String phone)
 }
 public void validateScreen()
 {
-	
+	//Verifying the display of various links on User profile screen
 	this.myProfile.click();
 	Assert.verify(this.userProfileLnk.isDisplayed());
 	Assert.verify(this.bookmarksLnk.isDisplayed());

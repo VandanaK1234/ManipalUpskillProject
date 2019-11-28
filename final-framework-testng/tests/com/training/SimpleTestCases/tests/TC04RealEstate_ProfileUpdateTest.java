@@ -50,7 +50,6 @@ public class TC04RealEstate_ProfileUpdateTest {
 		screenShot = new ScreenShot(driver); 
 		// open the base url of Retail application in browser
 		driver.get(baseUrl);
-		Thread.sleep(5000);
 		loginpgpom= new BaseLoginPOM(driver);
 		userprofilepom= new UserProfilePOM(driver);
 		registerationpg= new RegistrationPOM(driver);
@@ -74,39 +73,17 @@ public class TC04RealEstate_ProfileUpdateTest {
 				String adminPwd=properties.getProperty("adminpwd");
 					adminloginpg.adminLoginTest(adminUserName, adminPwd);
 						admindprofilepg.pwdGenerate(emailid);
-				Thread.sleep(2000);
-					//cleaning up the browser
+				//cleaning up the browser
 				driver.navigate().to(baseUrl);
-				Thread.sleep(2000);
+				
 	}
 		
 	
 	
 	@AfterMethod
 	public void tearDown() throws Exception {
-		Thread.sleep(1000);
-		/*
-		//Login to admin page and  delete the registered user.
-				String	adminUserName=properties.getProperty("adminID");
-				String adminPwd=properties.getProperty("adminpwd");
-				adminloginpg.adminLoginTest(adminUserName, adminPwd);
-		//deleting the user from admin profile page
-	admindprofilepg.userDeletion(userid);
-		//cleaning up the browser*/
-		driver.quit();
-	}
-		@Test(dataProvider = "xlsx-input-sheet2", dataProviderClass = LoginDataProviders.class)
-	     public void updateProfiledetails (String emailId,String pwd) throws InterruptedException, IOException
-		      {
-			homepgpom.loginOrRegisterlnktest();
-			Thread.sleep(5000);
-			//Enter user details for Logging in to application
-			loginpgpom.loginTest(emailId,pwd);
-			userprofilepom.validateScreen();
-			userprofilepom.updateDetails("Testing","123456");
-			Thread.sleep(2000);
-			driver.navigate().to("http://realestatem1.upskills.in/admin");
-			Thread.sleep(4000);
+			
+		   driver.navigate().to("http://realestatem1.upskills.in/admin");
 			String	adminUserName=properties.getProperty("adminID");
 			String adminPwd=properties.getProperty("adminpwd");
 			adminloginpg.adminLoginTest(adminUserName, adminPwd);
@@ -114,6 +91,19 @@ public class TC04RealEstate_ProfileUpdateTest {
 			String userid=properties.getProperty("userID");
 admindprofilepg.userDeletion(userid);
 	//cleaning up the browser
+		//cleaning up the browser
+		driver.quit();
+	}
+		@Test(dataProvider = "xlsx-input-sheet2", dataProviderClass = LoginDataProviders.class)
+	     public void updateProfiledetails (String emailId,String pwd) throws InterruptedException, IOException
+		      {
+			homepgpom.loginOrRegisterlnktest();
+			//Enter user details for Logging in to application
+			loginpgpom.loginTest(emailId,pwd);
+			userprofilepom.validateScreen();
+			userprofilepom.updateDetails("Testing","123456");
+			
+			
 	
 			
 		      }
