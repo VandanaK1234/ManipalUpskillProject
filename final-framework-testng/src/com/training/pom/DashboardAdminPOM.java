@@ -69,6 +69,11 @@ public class DashboardAdminPOM {
 	@FindBy(xpath="//*[@id='wp-admin-bar-logout']/a")
 	WebElement logout;
 	
+	@FindBy(xpath="//div[contains(text(),'Properties')]")
+	WebElement propertiesLnk;
+	
+	@FindBy(partialLinkText="New Launches")
+	WebElement newLaunch;
 	
 	public void validateScreen()
 		{
@@ -130,5 +135,10 @@ public class DashboardAdminPOM {
     	action.moveToElement(element).build().perform();
     	this.logout.click();
 		}
+	
+	public void userLnkclick()
+	{
+		this.usersLnk.click();
+	}
 	
 }
