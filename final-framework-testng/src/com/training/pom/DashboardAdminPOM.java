@@ -141,4 +141,9 @@ public class DashboardAdminPOM {
 		this.usersLnk.click();
 	}
 	
+	public void propertyLnkclick()
+	{
+		this.propertiesLnk.click();
+	}
+	
 }

@@ -14,6 +14,8 @@ import com.training.readexcel.ApachePOIExcelRead;
 import com.training.readexcel.ReadExcel;
 
 public class LoginDataProviders {
+	
+	
 
 	@DataProvider(name = "db-inputs")
 	public Object [][] getDBData() {
@@ -36,20 +38,42 @@ public class LoginDataProviders {
 	
 	@DataProvider(name = "xlsx-input-sheet1")
 	public Object[][] getExcelData1stsheet() throws IOException
-	{ Properties  properties = new Properties();
+	{ 
+		Properties  properties = new Properties();
+		FileInputStream inStream = new FileInputStream("C:\\Users\\VandanaKapoor\\git\\ManipalUpskillProject\\final-framework-testng\\resources\\others.properties");
+		properties.load(inStream);
+		String path= properties.getProperty("dataFilePath");
+		return new ApachePOIExcelRead().getExcelContentsheet(path,0); 
+	}
+	
+	@DataProvider(name = "xlsx-input-sheet2")
+	public Object[][] getExcelData2ndsheet() throws IOException
+	{Properties  properties = new Properties();
 	FileInputStream inStream = new FileInputStream("C:\\Users\\VandanaKapoor\\git\\ManipalUpskillProject\\final-framework-testng\\resources\\others.properties");
 	properties.load(inStream);
+	
 		String path= properties.getProperty("dataFilePath");
-		return new ApachePOIExcelRead().getExcelContentsheet1(path); 
+		return new ApachePOIExcelRead().getExcelContentsheet(path,1); 
 	}
-		@DataProvider(name = "xlsx-input-sheet2")
-		public Object[][] getExcelData2ndsheet() throws IOException{
-			Properties  properties = new Properties();
-			FileInputStream inStream = new FileInputStream("C:\\Users\\VandanaKapoor\\git\\ManipalUpskillProject\\final-framework-testng\\resources\\others.properties");
-			properties.load(inStream);
-			String path= properties.getProperty("dataFilePath"); 
-			return new ApachePOIExcelRead().getExcelContentsheet2(path);
+	@DataProvider(name = "xlsx-input-sheet3")
+	public Object[][] getExcelData3rdsheet() throws IOException
+	{Properties  properties = new Properties();
+	FileInputStream inStream = new FileInputStream("C:\\Users\\VandanaKapoor\\git\\ManipalUpskillProject\\final-framework-testng\\resources\\others.properties");
+	properties.load(inStream);
+	
+		String path= properties.getProperty("dataFilePath");
+		return new ApachePOIExcelRead().getExcelContentsheet(path,2); 
 	}
+	@DataProvider(name = "xlsx-input-sheet4")
+	public Object[][] getExcelData4thsheet() throws IOException
+	{
+		Properties  properties = new Properties();
+		FileInputStream inStream = new FileInputStream("C:\\Users\\VandanaKapoor\\git\\ManipalUpskillProject\\final-framework-testng\\resources\\others.properties");
+		properties.load(inStream);
+		String path= properties.getProperty("dataFilePath");
+		return new ApachePOIExcelRead().getExcelContentsheet(path,3); 
+	}
+		
 	
 	@DataProvider(name = "xls-inputs")
 	public Object[][] getXLSData(){

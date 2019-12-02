@@ -4,6 +4,7 @@ import static org.testng.Assert.assertEquals;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -29,9 +30,14 @@ public class AdminPropertiesPOM {
 	@FindBy(id="post-search-input")
 	WebElement searchTxt;
 	
-	@FindBy(partialLinkText="Test@123")
+	@FindBy(partialLinkText="Test Launch")
 	WebElement propertyTitleLnk;
 	
+	@FindBy(xpath="//a[@class='submitdelete']")
+	WebElement deletepropertyLnk;
+	
+	@FindBy(xpath="//td[@class='colspanchange']")
+	WebElement propertyDeletionconfirmation;
 	public void validateScreen()
 	{
 	   String actual="Properties";
@@ -47,6 +53,16 @@ public class AdminPropertiesPOM {
 		this.searchTxt.sendKeys(title);
 		String expectedtitle=this.propertyTitleLnk.getText();
 		assertEquals(expectedtitle,title);
+		Actions action= new Actions(driver);
+		action.moveToElement(propertyTitleLnk).build().perform();
+		this.deletepropertyLnk.click();
+		String expected="No Properties found";
+		String actual= this.propertyDeletionconfirmation.getText();
+		Assert.verify(actual.contains(expected));
+	}
+	public void addProperties()
+	{
+		this.addNewLnk.click();
 	}
 	
 }

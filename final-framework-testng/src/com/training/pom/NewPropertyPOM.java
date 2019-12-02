@@ -1,9 +1,13 @@
 package com.training.pom;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import common.Assert;
 
@@ -30,7 +34,7 @@ public class NewPropertyPOM {
 	@FindBy(id="_price_per")
 	WebElement pricePerSquareTxt;
 	
-	@FindBy(partialLinkText="Main Details")
+	@FindBy(linkText="Main Details")
 	WebElement mainDetailsTab;
 	
 	@FindBy(id="_status")
@@ -57,13 +61,13 @@ public class NewPropertyPOM {
 	@FindBy(id="_geolocation_long")
 	WebElement longitudeTxt;
 	
-	@FindBy(partialLinkText="Details")
+	@FindBy(linkText="Details")
 	WebElement detailsTab;
 	
 	@FindBy(id="_storage_room")
 	WebElement storageRoomTxt;
 	
-	@FindBy (id="in-region-57")
+	@FindBy (xpath="/html[1]/body[1]/div[1]/div[2]/div[2]/div[1]/div[3]/form[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/ul[1]/li[3]/ul[1]/li[3]/label[1]/input[1]")
 	WebElement regionChkBox;
 	
 	@FindBy(id="publish")
@@ -81,46 +85,65 @@ public class NewPropertyPOM {
 		
 		Assert.verify((this.priceTxt.isDisplayed()) && (this.priceTxt.isEnabled()));
 		Assert.verify((this.pricePerSquareTxt.isDisplayed()) && (this.pricePerSquareTxt.isEnabled()));
+		WebDriverWait wait = new WebDriverWait(driver, 2000);
+		WebElement element  = wait.until(
+				ExpectedConditions.visibilityOfElementLocated(By.partialLinkText(("Main Details"))));
 		
 		this.mainDetailsTab.click();
 		Assert.verify((this.statusTxt.isDisplayed()) && (this.statusTxt.isEnabled()));
 		Assert.verify((this.locationTxt.isDisplayed()) && (this.locationTxt.isEnabled()));
 		Assert.verify((this.possesionTxt.isDisplayed()) && (this.possesionTxt.isEnabled()));
 		
+		 element  = wait.until(
+				ExpectedConditions.visibilityOfElementLocated(By.partialLinkText(("Location"))));
+		
 		this.locationTab.click();
 		Assert.verify((this.addressTxt.isDisplayed()) && (this.addressTxt.isEnabled()));
 		Assert.verify((this.googleMapaddressTxt.isDisplayed()) && (this.googleMapaddressTxt.isEnabled()));
 		Assert.verify((this.latitudeTxt.isDisplayed()) && (this.latitudeTxt.isEnabled()));
 		Assert.verify((this.longitudeTxt.isDisplayed()) && (this.longitudeTxt.isEnabled()));
-		this.detailsTab.click();
-		Assert.verify((this.storageRoomTxt.isDisplayed()) && (this.storageRoomTxt.isEnabled()));
+		
+		 element  = wait.until(
+					ExpectedConditions.visibilityOfElementLocated(By.partialLinkText(("Details"))));
+		
+	//	this.detailsTab.click();
+		//Assert.verify((this.storageRoomTxt.isDisplayed()) && (this.storageRoomTxt.isEnabled()));
 		
 	}
 	public void addpropertyPriceDetails(String title,String price,String pricePersquare)
 	{
 		this.enterTitleTxt.clear();
-		this.enterTitleTxt.sendKeys(title);
-		this.textArea.clear();
-		this.textArea.sendKeys(price);
-		this.priceTxt.clear();
+		this.enterTitleTxt.sendKeys(title,Keys.TAB);
+		//this.textArea.clear();
+		this.textArea.sendKeys(title,Keys.TAB);
+		this.regionChkBox.click();
+		this.priceTxt.sendKeys(price,Keys.TAB);
 		this.pricePerSquareTxt.sendKeys(pricePersquare);
+		WebDriverWait wait = new WebDriverWait(driver, 3000);
+		WebElement element  = wait.until(
+				ExpectedConditions.elementToBeClickable(By.id("publish")));
+		
 		
 				
 	}
 	public void addpropertyMainDetails(String status,String location,String possession)
 	{   
+		WebDriverWait wait = new WebDriverWait(driver, 2000);
+		WebElement element  = wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Main Details")));
 		this.mainDetailsTab.click();
 		this.statusTxt.clear();
 		this.statusTxt.sendKeys(status);
 		this.locationTxt.clear();
-		this.locationTxt.sendKeys(status);
+		this.locationTxt.sendKeys(location);
 		this.possesionTxt.clear();
-		this.possesionTxt.sendKeys(status);
+		this.possesionTxt.sendKeys(possession);
 		
 	}
 	public void addpropertyLocationDetails(String address,String googleaddress,String longitude,String latitude)
 	{   
-		this.locationTab.click();
+		WebDriverWait wait = new WebDriverWait(driver, 2000);
+		WebElement element  = wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Location")));
+		element.click();
 		this.addressTxt.clear();
 		this.addressTxt.sendKeys(address);
 		this.googleMapaddressTxt.clear();
@@ -133,9 +156,22 @@ public class NewPropertyPOM {
 	}
 	public void addpropertyDetailstab(String storageRoom)
 	{
-		this.detailsTab.click();
+		WebDriverWait wait = new WebDriverWait(driver, 2000);
+		WebElement element  = wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Details")));
+		element.click();
 		this.storageRoomTxt.clear();
 		this.storageRoomTxt.sendKeys(storageRoom);
 		
+		
+		
+	}
+	public void publishproperty()
+	{
+		WebDriverWait wait = new WebDriverWait(driver, 3000);
+		WebElement element  = wait.until(
+				ExpectedConditions.elementToBeClickable(By.id("publish")));
+		
+		
+		element.click();
 	}
 }

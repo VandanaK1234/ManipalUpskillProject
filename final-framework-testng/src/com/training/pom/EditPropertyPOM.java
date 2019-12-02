@@ -19,13 +19,16 @@ public class EditPropertyPOM {
 	
 	@FindBy(xpath="//h1[@class='wp-heading-inline']")
 	WebElement header;
+	@FindBy(partialLinkText="View post")
+	WebElement viewpost;
 	
 	public void validateScreen()
 	{
-		String actual="Users";
-		Assert.verify(header.isDisplayed());
-		 Assert.verify(this.header.getText().contains(actual));
-		 Assert.verify(header2.isDisplayed()); 
+		//String actual="Users";
+		Assert.verify(this.header.isDisplayed());
+		// Assert.verify(this.header.getText().contains(actual));
+		 Assert.verify(this.header2.isDisplayed()); 
+		 Assert.verify(this.viewpost.isDisplayed());
 		 
 	}
 

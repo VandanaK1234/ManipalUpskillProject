@@ -4,6 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+
+import common.Assert;
 
 public class NewUserPOM 
 {
@@ -47,6 +50,27 @@ public class NewUserPOM
 	@FindBy(id="createusersub")
 	WebElement createUserBtn;
 	
-	
+	public void addNewUser(String userNm,String email,String firstNm,String lastNm,String url,String pwd)
+	{
+		this.userName.clear();
+		this.userName.sendKeys(userNm);
+		this.eMail.clear();
+		this.eMail.sendKeys(email);
+		this.firstName.clear();
+		this.firstName.sendKeys(firstNm);
+		this.lastName.clear();
+		this.lastName.sendKeys(lastNm);
+		this.website.clear();
+		this.website.sendKeys(url);
+		this.showPwdBtn.click();
+		this.pwdTxt.clear();
+		this.pwdTxt.sendKeys(pwd);
+		Assert.verify(this.hideBtn.isDisplayed());
+		Assert.verify(this.cancelBtn.isDisplayed());
+		Select select1= new Select(this.roleSelect);
+		select1.selectByVisibleText("Agent");
+		this.createUserBtn.click();
+		
+	}
 
 }

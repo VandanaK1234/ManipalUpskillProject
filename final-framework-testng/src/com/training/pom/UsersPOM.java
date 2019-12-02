@@ -1,9 +1,14 @@
 package com.training.pom;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import common.Assert;
 
@@ -26,6 +31,23 @@ public class UsersPOM {
    
    @FindBy(xpath="//p[contains(text(),'New user created.')]")
    WebElement header2;
+
+	//Search text box to search any user
+	@FindBy(xpath="//input[@id='user-search-input']")
+	WebElement searchTxt;
+	
+	//Delete button to delete any user
+	@FindBy(xpath="//a[@class='submitdelete']")
+	WebElement deleteBtn;
+	
+	@FindBy(xpath="//*[@id='wp-admin-bar-logout']/a")
+	WebElement logout;
+	
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[2]/div[2]/div[1]/div[3]/form[1]/table[1]/tbody[1]/tr[1]/td[1]/strong[1]/a[1]")
+	WebElement user;
+	
+	@FindBy(id="submit")
+	WebElement confirmDelete;
    
    public void validateScreen()
    {
@@ -35,4 +57,42 @@ public class UsersPOM {
 	   Assert.verify(this.addNewUserLnk.isDisplayed());
 	   
    }
+   public void addUser()
+   {
+	   this.addNewUserLnk.click();
+   }
+   public void validateuserCreation()
+   {
+	   Assert.verify(this.header2.isDisplayed());
+	  
+	   	   
+   }
+   public void searchUser(String userNm)
+   {
+	   this.searchTxt.clear();
+	   this.searchTxt.sendKeys(userNm,Keys.ENTER);
+	   Assert.verify(this.user.isDisplayed());
+   } 
+   public void deleteUser(String userNm)
+   {
+	  this.searchUser(userNm);
+	  Actions action = new Actions(driver);
+  	WebElement element= driver.findElement(By.xpath("//td[@class='username column-username has-row-actions column-primary']"));
+  	action.moveToElement(element).build().perform();
+		//Deleting that user
+		this.deleteBtn.click();
+		this.confirmDelete.click();
+	    String expected="User deleted";
+		String actual=(driver.findElement(By.xpath("/html/body/div/div[2]/div[2]/div[1]/div[3]/div[2]/p"))).getText();
+		Assert.verify(actual.contains(expected));
+	  WebDriverWait wait = new WebDriverWait(driver, 3000);
+		element  = wait.until(
+				ExpectedConditions.elementToBeClickable(this.deleteBtn));
+		element.click();
+	  this.searchTxt.clear();
+	   this.searchTxt.sendKeys(userNm,Keys.ENTER);
+	   Assert.verify(!(this.user.isDisplayed()));
+	   this.logout.click();
+   }
+   
 }
