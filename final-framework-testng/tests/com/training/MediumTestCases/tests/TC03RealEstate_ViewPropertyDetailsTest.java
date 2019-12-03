@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -35,6 +36,7 @@ public class TC03RealEstate_ViewPropertyDetailsTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws IOException
 	{
+		//Loading the property file to be referred later in test case
 		properties = new Properties();
 		FileInputStream inStream = new FileInputStream("./resources/others.properties");
 		properties.load(inStream);
@@ -44,13 +46,15 @@ public class TC03RealEstate_ViewPropertyDetailsTest {
 	public void setUp() throws Exception 
 	{
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
+		//Initializing all web pages
 		dashboardadminpg= new DashboardAdminPOM(driver);
 		adminloginpg=new AdminLoginPOM(driver);
-		String adminurl = properties.getProperty("adminURL");
 		newpropertypg= new NewPropertyPOM(driver);
 		editpropertypg= new EditPropertyPOM(driver);
 		adminpropertiespg= new AdminPropertiesPOM(driver);
 		screenShot = new ScreenShot(driver); 
+		//Reading admin url from properties file
+		String adminurl = properties.getProperty("adminURL");
 		//  Opening home page for Retail application in browser
 		driver.get(adminurl);
 		
@@ -60,31 +64,38 @@ public class TC03RealEstate_ViewPropertyDetailsTest {
 	@AfterMethod
 	public void tearDown() throws Exception
 	{
-		
-		//driver.quit();
+		//Cleaning up the browser
+		//Searching and deleting the added property by admin
+		adminpropertiespg.searchAndDeleteProperty(properties.getProperty("title"));
+		driver.quit();
 	}
 
 	
 	@Test (dataProvider = "xlsx-input-sheet4", dataProviderClass = LoginDataProviders.class)
-	public void ViewPropertyDetails(String title,String price,String pricepersq,String status,String location,String possession,String address,String googleaddress,String longitude,String latitude,String storageRoom)
+	public void ViewPropertyDetails(String title,String price,String pricepersq,String status,String location,String possession,String address,String googleaddress,String longitude,String latitude,String storageRoom) throws InterruptedException, IOException
 	{
 
 		String adminid=properties.getProperty("adminID");
 		String adminpwd=properties.getProperty("adminpwd");
 		String sheet=properties.getProperty("adminID");
+		//Admin login
 		adminloginpg.adminLoginTest(adminid,adminpwd);
+		//validating the admin dashboard
 		dashboardadminpg.validateScreen();
-		dashboardadminpg.propertyLnkclick();
 		
+		dashboardadminpg.propertyLnkclick();
+		//Clicking addproperty link to add new property
 		adminpropertiespg.addProperties();
 		newpropertypg.validateHeader();
-		//newpropertypg.validateTabsDetails();
-		newpropertypg.addpropertyPriceDetails(title,null,null);
 		
+		//Add property details
+		
+		newpropertypg.addpropertyPriceDetails(title,price,pricepersq);
+		//Publishing the property
 		newpropertypg.publishproperty();
-		newpropertypg.publishproperty();
-	editpropertypg.validateScreen();
-	adminpropertiespg.searchProperty(title);
+		
+	
+	
 		
 	}
 }

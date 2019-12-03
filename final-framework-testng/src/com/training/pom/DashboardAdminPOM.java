@@ -66,12 +66,15 @@ public class DashboardAdminPOM {
 	@FindBy(name="submit")
 	WebElement updateUser;
 	
+	//logout button
 	@FindBy(xpath="//*[@id='wp-admin-bar-logout']/a")
 	WebElement logout;
 	
+	//Properties link 
 	@FindBy(xpath="//div[contains(text(),'Properties')]")
 	WebElement propertiesLnk;
 	
+	//New Launches post
 	@FindBy(partialLinkText="New Launches")
 	WebElement newLaunch;
 	
@@ -119,15 +122,19 @@ public class DashboardAdminPOM {
 		this.searchTxt.clear();
 		this.searchTxt.sendKeys(userId);
 		this.searchTxt.sendKeys(Keys.ENTER);
+		//mouse hover the searched user and edit that user details
 		Actions action = new Actions(driver);
     	WebElement element= driver.findElement(By.xpath("//td[@class='username column-username has-row-actions column-primary']"));
     	action.moveToElement(element).build().perform();
     	this.editBtn.click();
+    	//Generate pwd for that user
     	this.pwdGenerateBtn.click();	
     	this.password.clear();
     	this.password.sendKeys("Chikchik@123");
+    	//update the user details
     	this.updateUser.click();
     	   	
+    	//validating that user details are updated.
     	String expected="User updated";
 		String actual=(driver.findElement(By.xpath("//strong[contains(text(),'User updated.')]"))).getText();
 		Assert.verify(actual.contains(expected));
@@ -135,6 +142,7 @@ public class DashboardAdminPOM {
     	action.moveToElement(element).build().perform();
     	this.logout.click();
 		}
+	
 	
 	public void userLnkclick()
 	{
@@ -145,5 +153,10 @@ public class DashboardAdminPOM {
 	{
 		this.propertiesLnk.click();
 	}
+	public void newLaunchLnk()
+	{
+		this.newLaunch.click();
+	}
+	
 	
 }

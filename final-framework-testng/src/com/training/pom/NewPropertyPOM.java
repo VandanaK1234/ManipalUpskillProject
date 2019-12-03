@@ -1,5 +1,6 @@
 package com.training.pom;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -18,13 +19,15 @@ public class NewPropertyPOM {
 		this.driver=driver;
 		PageFactory.initElements(driver,this);
 	}
-	
+	//Header in the screen
 	@FindBy(xpath="//h1[@class='wp-heading-inline']")
 	WebElement header;
 	
+	//Enter title text box.
 	@FindBy(name="post_title")
 	WebElement enterTitleTxt;
 	
+	//Text area for title
 	@FindBy(xpath="//textarea[@id='content']")
 	WebElement textArea;
 	
@@ -61,7 +64,7 @@ public class NewPropertyPOM {
 	@FindBy(id="_geolocation_long")
 	WebElement longitudeTxt;
 	
-	@FindBy(linkText="Details")
+	@FindBy(id="ui-id-4")
 	WebElement detailsTab;
 	
 	@FindBy(id="_storage_room")
@@ -70,9 +73,10 @@ public class NewPropertyPOM {
 	@FindBy (xpath="/html[1]/body[1]/div[1]/div[2]/div[2]/div[1]/div[3]/form[1]/div[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/ul[1]/li[3]/ul[1]/li[3]/label[1]/input[1]")
 	WebElement regionChkBox;
 	
-	@FindBy(id="publish")
+	@FindBy(xpath="/html[1]/body[1]/div[1]/div[2]/div[2]/div[1]/div[3]/form[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/input[2]")
 	WebElement publishBtn;
 	
+	//Validating the header
 	public void validateHeader()
 	{
 		String actual="Add Property";
@@ -80,15 +84,17 @@ public class NewPropertyPOM {
 		 Assert.verify(this.header.getText().contains(actual));
 		 
 	}
+	
+	//Validating fields in different tabs
 	public void validateTabsDetails()
 	{
-		
+		//Fields in price tab
 		Assert.verify((this.priceTxt.isDisplayed()) && (this.priceTxt.isEnabled()));
 		Assert.verify((this.pricePerSquareTxt.isDisplayed()) && (this.pricePerSquareTxt.isEnabled()));
 		WebDriverWait wait = new WebDriverWait(driver, 2000);
 		WebElement element  = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.partialLinkText(("Main Details"))));
-		
+		//Fields validation in MainDetails tab
 		this.mainDetailsTab.click();
 		Assert.verify((this.statusTxt.isDisplayed()) && (this.statusTxt.isEnabled()));
 		Assert.verify((this.locationTxt.isDisplayed()) && (this.locationTxt.isEnabled()));
@@ -97,6 +103,7 @@ public class NewPropertyPOM {
 		 element  = wait.until(
 				ExpectedConditions.visibilityOfElementLocated(By.partialLinkText(("Location"))));
 		
+		 //Fields validation in Location tab
 		this.locationTab.click();
 		Assert.verify((this.addressTxt.isDisplayed()) && (this.addressTxt.isEnabled()));
 		Assert.verify((this.googleMapaddressTxt.isDisplayed()) && (this.googleMapaddressTxt.isEnabled()));
@@ -105,11 +112,13 @@ public class NewPropertyPOM {
 		
 		 element  = wait.until(
 					ExpectedConditions.visibilityOfElementLocated(By.partialLinkText(("Details"))));
-		
-	//	this.detailsTab.click();
-		//Assert.verify((this.storageRoomTxt.isDisplayed()) && (this.storageRoomTxt.isEnabled()));
+		//Fields validation in details tab
+		this.detailsTab.click();
+		Assert.verify((this.storageRoomTxt.isDisplayed()) && (this.storageRoomTxt.isEnabled()));
 		
 	}
+	
+	//Adding property details in price tab
 	public void addpropertyPriceDetails(String title,String price,String pricePersquare)
 	{
 		this.enterTitleTxt.clear();
@@ -124,8 +133,11 @@ public class NewPropertyPOM {
 				ExpectedConditions.elementToBeClickable(By.id("publish")));
 		
 		
+		
 				
 	}
+	
+	//Adding property details in Main Details tab
 	public void addpropertyMainDetails(String status,String location,String possession)
 	{   
 		WebDriverWait wait = new WebDriverWait(driver, 2000);
@@ -139,6 +151,8 @@ public class NewPropertyPOM {
 		this.possesionTxt.sendKeys(possession);
 		
 	}
+	
+	//Adding property details in Location tab
 	public void addpropertyLocationDetails(String address,String googleaddress,String longitude,String latitude)
 	{   
 		WebDriverWait wait = new WebDriverWait(driver, 2000);
@@ -154,10 +168,12 @@ public class NewPropertyPOM {
 		this.longitudeTxt.sendKeys(latitude);
 		
 	}
+	
+	//Adding property details in Details tab
 	public void addpropertyDetailstab(String storageRoom)
 	{
 		WebDriverWait wait = new WebDriverWait(driver, 2000);
-		WebElement element  = wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Details")));
+		WebElement element  = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ui-id-4")));
 		element.click();
 		this.storageRoomTxt.clear();
 		this.storageRoomTxt.sendKeys(storageRoom);
@@ -165,13 +181,16 @@ public class NewPropertyPOM {
 		
 		
 	}
-	public void publishproperty()
+	public void publishproperty() throws InterruptedException
 	{
+		this.publishBtn.submit();
 		WebDriverWait wait = new WebDriverWait(driver, 3000);
-		WebElement element  = wait.until(
-				ExpectedConditions.elementToBeClickable(By.id("publish")));
+		wait.until(ExpectedConditions.alertIsPresent());
+		driver.switchTo().alert().accept();
 		
 		
-		element.click();
+		//driver.findElement(By.id("publish")).submit();
+		
+		
 	}
 }

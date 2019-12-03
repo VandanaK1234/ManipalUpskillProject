@@ -37,6 +37,7 @@ public class TC04RealEstate_ViewUsersTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws IOException
 	{
+		//Loading the property file to be referred later in test case
 		properties = new Properties();
 		FileInputStream inStream = new FileInputStream("./resources/others.properties");
 		properties.load(inStream);
@@ -47,45 +48,50 @@ public class TC04RealEstate_ViewUsersTest {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		
+		//Initializing all web pages
+				dashboardadminpg= new DashboardAdminPOM(driver);
+				adminloginpg=new AdminLoginPOM(driver);
+				admin_userspg= new UsersPOM(driver);
+				newuserpg= new NewUserPOM(driver);
+				
+				//Reading admin url from properties file
 		String adminurl = properties.getProperty("adminURL");
 		screenShot = new ScreenShot(driver); 
-		//  Opening home page for Retail application in browser
+		//  Opening admin login page for Retail application in browser
 		driver.get(adminurl);
-		//adding some wait time to load the page
-		dashboardadminpg= new DashboardAdminPOM(driver);
-		adminloginpg=new AdminLoginPOM(driver);
-		admin_userspg= new UsersPOM(driver);
-		newuserpg= new NewUserPOM(driver);
-		String fileName= properties.getProperty("dataFilePath");
-		String sheetNm= properties.getProperty("SheetTC04MediumTst");
+		
 		
 	}
 	
 	@AfterMethod
-	public void tearDown() throws Exception {
-		//Read userId for deletion from repository
-				String userid=properties.getProperty("userID");
-		//  delete the registered user.
-		
+	public void tearDown() throws Exception 
+	{
+		//Deleting the user added by admin from  new users screen
+		admin_userspg.deleteUser(properties.getProperty("userNm"));
 		driver.quit();
 	}
 		
 		@Test (dataProvider = "xlsx-input-sheet3", dataProviderClass = LoginDataProviders.class)
 				public void addAndViewUsers(String userNm,String email,String firstNm,String lastNm,String url,String pwd)
 		{
+			
+			//Admin login
 			String adminid=properties.getProperty("adminID");
 			String adminpwd=properties.getProperty("adminpwd");
 			String sheet=properties.getProperty("adminID");
 			adminloginpg.adminLoginTest(adminid,adminpwd);
+			//Validating admin dashboard
 			dashboardadminpg.validateScreen();
+			//Clicking users link
 			dashboardadminpg.userLnkclick();
-			admin_userspg.validateScreen();
+				admin_userspg.validateScreen();
+				//Clicking add user to add new user
 			admin_userspg.addUser();
+			//Entering details for new user
 			newuserpg.addNewUser(userNm, email, firstNm, lastNm, url, pwd);
+			//Validating if user is created
 			admin_userspg.validateuserCreation();
-			
-			admin_userspg.deleteUser(userNm);
+					
 			
 		}
 	

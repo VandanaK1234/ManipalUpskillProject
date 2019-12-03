@@ -73,6 +73,15 @@ public class LoginDataProviders {
 		String path= properties.getProperty("dataFilePath");
 		return new ApachePOIExcelRead().getExcelContentsheet(path,3); 
 	}
+	@DataProvider(name = "xlsx-input-sheet5")
+	public Object[][] getExcelData5thsheet() throws IOException
+	{
+		Properties  properties = new Properties();
+		FileInputStream inStream = new FileInputStream("C:\\Users\\VandanaKapoor\\git\\ManipalUpskillProject\\final-framework-testng\\resources\\others.properties");
+		properties.load(inStream);
+		String path= properties.getProperty("dataFilePath");
+		return new ApachePOIExcelRead().getExcelContentsheet(path,4); 
+	}
 		
 	
 	@DataProvider(name = "xls-inputs")

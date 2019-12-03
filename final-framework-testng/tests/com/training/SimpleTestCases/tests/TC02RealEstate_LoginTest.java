@@ -51,6 +51,8 @@ public class TC02RealEstate_LoginTest {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
+		
+		//Initializing all web pages
 		homepgpom = new BaseurlHomePOM(driver); 
 		
 		baseUrl = properties.getProperty("baseURL");

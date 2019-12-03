@@ -36,6 +36,7 @@ public class TC01RealEstate_AddAllPropertiesTest
 	@BeforeClass
 	public static void setUpBeforeClass() throws IOException
 	{
+		//Loading the property file to be referred later in test case
 		properties = new Properties();
 		FileInputStream inStream = new FileInputStream("./resources/others.properties");
 		properties.load(inStream);
@@ -45,14 +46,17 @@ public class TC01RealEstate_AddAllPropertiesTest
 	public void setUp() throws Exception 
 	{
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
+		//Initializing all web pages
 		dashboardadminpg= new DashboardAdminPOM(driver);
 		adminloginpg=new AdminLoginPOM(driver);
 		adminpropertiespg= new AdminPropertiesPOM(driver);
 		newpropertypg= new NewPropertyPOM(driver);
 		editpropertypg= new EditPropertyPOM(driver);
+		
+		//Reading admin url from properties file
 		String adminurl = properties.getProperty("adminURL");
 		screenShot = new ScreenShot(driver); 
-		//  Opening home page for Retail application in browser
+		//  Opening admin login page for Retail application in browser
 		driver.get(adminurl);
 		
 		
@@ -61,33 +65,39 @@ public class TC01RealEstate_AddAllPropertiesTest
 	@AfterMethod
 	public void tearDown() throws Exception
 	{
-		
-		driver.quit();
+		//Searching and deleting the added property by admin
+				adminpropertiespg.searchAndDeleteProperty(properties.getProperty("title"));
+				driver.quit();
 	}
 
 	
 	@Test (dataProvider = "xlsx-input-sheet4", dataProviderClass = LoginDataProviders.class)
-	public void addAllProperties(String title,String price,String pricepersq,String status,String location,String possession,String address,String googleaddress,String longitude,String latitude,String storageRoom)
+	public void addAllProperties(String title,String price,String pricepersq,String status,String location,String possession,String address,String googleaddress,String longitude,String latitude,String storageRoom) throws InterruptedException, IOException
 	{
+		//admin login
 		String adminid=properties.getProperty("adminID");
 		String adminpwd=properties.getProperty("adminpwd");
 		String sheet=properties.getProperty("adminID");
 		adminloginpg.adminLoginTest(adminid,adminpwd);
+		
+		//Validating the dashboard of admin
 		dashboardadminpg.validateScreen();
+		//Clicking properties link
 		dashboardadminpg.propertyLnkclick();
+		//Clicking addproperty link to add new property
 		adminpropertiespg.addProperties();
 		newpropertypg.validateHeader();
 		//newpropertypg.validateTabsDetails();
+		//Adding details in different tabs
 		newpropertypg.addpropertyPriceDetails(title,price,pricepersq);
 		newpropertypg.addpropertyMainDetails(status, location, possession);
 		newpropertypg.addpropertyLocationDetails(address, googleaddress, longitude, latitude);
 		newpropertypg.addpropertyDetailstab(storageRoom);
+		
+		//publishing the property
 		newpropertypg.publishproperty();
-		editpropertypg.validateScreen();
-		adminpropertiespg.searchProperty(title);
 		
-		
-		
+			
 	}
 }
 

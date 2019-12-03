@@ -3,14 +3,14 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.training.MediumTestCases.tests.TC03RealEstate_ViewPropertyDetailsTest">
+      <class name="com.training.MediumTestCases.tests.TC04RealEstate_ViewUsersTest">
         <methods>
           <include name="setUpBeforeClass"/>
-          <include name="ViewPropertyDetails" invocation-numbers="0"/>
           <include name="setUp"/>
+          <include name="addAndViewUsers" invocation-numbers="0"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- com.training.MediumTestCases.tests.TC03RealEstate_ViewPropertyDetailsTest -->
+      </class> <!-- com.training.MediumTestCases.tests.TC04RealEstate_ViewUsersTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

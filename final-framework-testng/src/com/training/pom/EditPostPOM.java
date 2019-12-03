@@ -16,5 +16,12 @@ public class EditPostPOM {
 	
 	@FindBy(xpath="/html[1]/body[1]/div[1]/div[2]/div[2]/div[1]/div[3]/form[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/span[1]/a[1]")
     WebElement NewlaunchLink;
+	
+	//New Launches link on Post screen.
+	
+	public void newLaunch()
+	{
+		this.NewlaunchLink.click();
+	}
 }
 

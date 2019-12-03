@@ -14,9 +14,12 @@ public class EditPropertyPOM {
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}
+	
+	//Header link
 	@FindBy(xpath="//p[contains(text(),'Post published.')]")
 	WebElement header2;
 	
+	//Header link to view the post
 	@FindBy(xpath="//h1[@class='wp-heading-inline']")
 	WebElement header;
 	@FindBy(partialLinkText="View post")

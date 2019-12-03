@@ -20,15 +20,20 @@ public class UsersPOM {
 		PageFactory.initElements(driver, this);
 	}
 	
+	//All users link
 	@FindBy(xpath="//a[@class='wp-first-item current']")
 	WebElement allUsersLnk;
+	
+	//Link for adding new user
 	
    @FindBy(xpath="//li[@id='menu-users']//ul[@class='wp-submenu wp-submenu-wrap']//li//a[contains(text(),'Add New')]")
    WebElement addNewUserLnk;
    
+   //Header title
    @FindBy(xpath="//h1[@class='wp-heading-inline']")
    WebElement header1;
    
+   //second header after adding new user
    @FindBy(xpath="//p[contains(text(),'New user created.')]")
    WebElement header2;
 
@@ -39,6 +44,8 @@ public class UsersPOM {
 	//Delete button to delete any user
 	@FindBy(xpath="//a[@class='submitdelete']")
 	WebElement deleteBtn;
+	
+	//logout button
 	
 	@FindBy(xpath="//*[@id='wp-admin-bar-logout']/a")
 	WebElement logout;
@@ -85,14 +92,10 @@ public class UsersPOM {
 	    String expected="User deleted";
 		String actual=(driver.findElement(By.xpath("/html/body/div/div[2]/div[2]/div[1]/div[3]/div[2]/p"))).getText();
 		Assert.verify(actual.contains(expected));
-	  WebDriverWait wait = new WebDriverWait(driver, 3000);
-		element  = wait.until(
-				ExpectedConditions.elementToBeClickable(this.deleteBtn));
-		element.click();
-	  this.searchTxt.clear();
-	   this.searchTxt.sendKeys(userNm,Keys.ENTER);
-	   Assert.verify(!(this.user.isDisplayed()));
-	   this.logout.click();
+	 
+		element= driver.findElement(By.xpath("//*[@id='wp-admin-bar-my-account']/a/img"));
+    	action.moveToElement(element).build().perform();
+    	this.logout.click();
    }
    
 }
