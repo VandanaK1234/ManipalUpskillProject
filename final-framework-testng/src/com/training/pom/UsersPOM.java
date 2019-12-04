@@ -55,6 +55,9 @@ public class UsersPOM {
 	
 	@FindBy(id="submit")
 	WebElement confirmDelete;
+	
+	@FindBy(xpath="//td[@class='colspanchange']")
+	WebElement confirmationNouserExist;
    
    public void validateScreen()
    {
@@ -97,5 +100,11 @@ public class UsersPOM {
     	action.moveToElement(element).build().perform();
     	this.logout.click();
    }
+   public void searchUser_notexist(String userNm)
+   {
+	   this.searchTxt.clear();
+	   this.searchTxt.sendKeys(userNm,Keys.ENTER);
+	   Assert.verify((this.confirmationNouserExist.isDisplayed()));
+   } 
    
 }

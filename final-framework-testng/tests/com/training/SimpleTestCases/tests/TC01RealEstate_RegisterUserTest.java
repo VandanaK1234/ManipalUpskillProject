@@ -74,6 +74,8 @@ public class TC01RealEstate_RegisterUserTest {
 		
 		//Verify if Login/Register Link is being displayed on home page and click on that link
 		homepgpom.loginOrRegisterlnktest();
+		//Navigating to Registration tab
+		registerationpg.registerTabClick();
 		// Verifying field details on Registration screen
 		registerationpg.validateRegistrationScreen();
 		//Registering new user
@@ -85,7 +87,7 @@ public class TC01RealEstate_RegisterUserTest {
 		
 		registerationpg.RegisterUser(emailid,firstName,lastName);
 		//validate that user is not allowed to register again
-		registerationpg.InvalidLoginDetails();
+		registerationpg.InvalidRegistrationDetails();
 		
 	}
 }

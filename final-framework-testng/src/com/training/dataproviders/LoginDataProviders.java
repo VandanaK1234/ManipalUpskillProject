@@ -82,8 +82,24 @@ public class LoginDataProviders {
 		String path= properties.getProperty("dataFilePath");
 		return new ApachePOIExcelRead().getExcelContentsheet(path,4); 
 	}
-		
-	
+	@DataProvider(name = "xlsx-input-sheet6")
+	public Object[][] getExcelData6thsheet() throws IOException
+	{
+		Properties  properties = new Properties();
+		FileInputStream inStream = new FileInputStream("C:\\Users\\VandanaKapoor\\git\\ManipalUpskillProject\\final-framework-testng\\resources\\others.properties");
+		properties.load(inStream);
+		String path= properties.getProperty("dataFilePath");
+		return new ApachePOIExcelRead().getExcelContentsheet(path,5); 
+	}
+	@DataProvider(name = "xlsx-input-sheet7")
+	public Object[][] getExcelData7thsheet() throws IOException
+	{
+		Properties  properties = new Properties();
+		FileInputStream inStream = new FileInputStream("C:\\Users\\VandanaKapoor\\git\\ManipalUpskillProject\\final-framework-testng\\resources\\others.properties");
+		properties.load(inStream);
+		String path= properties.getProperty("dataFilePath");
+		return new ApachePOIExcelRead().getExcelContentsheet(path,6); 
+	}
 	@DataProvider(name = "xls-inputs")
 	public Object[][] getXLSData(){
 		// ensure you will have the title as first line in the file 

@@ -48,6 +48,11 @@ private WebElement registerBtn;
  @FindBy(xpath="/html[1]/body[1]/div[1]/div[4]/div[1]/article[1]/div[1]/div[1]/div[1]/ul[1]/li[2]/a[1]")
  private WebElement registerLnk;
 
+ //Invalid emailId message
+ 
+ @FindBy(xpath="//p[contains(text(),'The email address you entered is not valid.')]")
+ WebElement invalidEmailmessage;
+ 
  //Registering the new user
 public void RegisterUser(String emailid,String firstNM,String lastNM) throws InterruptedException
 { 
@@ -59,7 +64,12 @@ public void RegisterUser(String emailid,String firstNM,String lastNM) throws Int
 	this.lastNm.clear();
 	this.lastNm.sendKeys(lastNM);
 	this.registerBtn.click();
-	Thread.sleep(3000);
+	  //  true && true
+	if(!(emailid.contains("@")) && !(emailid.contains(".")))
+			{
+		Assert.verify(this.invalidEmailmessage.isDisplayed());
+			}
+	
 }
 
 //Validating that users details are correct and is registered successfully
@@ -72,7 +82,7 @@ public void validLoginDetails()
 		
 }
 //Validating that already registered user is not able to register again
-public void InvalidLoginDetails()
+public void InvalidRegistrationDetails()
 {
 	WebElement element=driver.findElement(By.xpath("//*[@id='post-133']/div/div/div/div[1]/p"));
 	String expected="An account exists with this email address.";
@@ -84,11 +94,15 @@ public void InvalidLoginDetails()
 
 //Verifying all the elements on Registration screen 
 	public void validateRegistrationScreen()
-	{    this.registerLnk.click();
+	{   
 		Assert.verify((this.emailid.isDisplayed()&&(this.emailid.isEnabled())));
 		Assert.verify((this.firstNm.isDisplayed()&&(this.firstNm.isEnabled())));
 		Assert.verify((this.lastNm.isDisplayed()&&(this.lastNm.isEnabled())));
 		Assert.verify((this.registerBtn.isDisplayed()&&(this.registerBtn.isEnabled())));
+	}
+	public void registerTabClick()
+	{
+		 this.registerLnk.click();
 	}
 	
 }

@@ -57,6 +57,7 @@ public class NewLaunchPOM {
 	
 	//Confirmation text after sending inquiry
 	@FindBy(xpath="//div[contains(@class,'wpcf7-response-output wpcf7-display-none wpcf7-mail-sent-ng')]")
+	           
 	WebElement confirmationText1;
 	
 	//amount text for mortgage calculation
