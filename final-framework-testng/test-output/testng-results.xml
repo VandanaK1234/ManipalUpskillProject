@@ -1,61 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="53701" started-at="2019-12-03T13:46:26 IST" finished-at="2019-12-03T13:47:20 IST">
+  <suite name="Default suite" duration-ms="242468" started-at="2019-12-04T18:23:32 IST" finished-at="2019-12-04T18:27:35 IST">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="53701" started-at="2019-12-03T13:46:26 IST" finished-at="2019-12-03T13:47:20 IST">
-      <class name="com.training.MediumTestCases.tests.TC04RealEstate_ViewUsersTest">
-        <test-method status="PASS" signature="setUpBeforeClass()[pri:0, instance:com.training.MediumTestCases.tests.TC04RealEstate_ViewUsersTest@22a67b4]" name="setUpBeforeClass" is-config="true" duration-ms="15" started-at="2019-12-03T13:46:27 IST" finished-at="2019-12-03T13:46:27 IST">
+    <test name="Default test" duration-ms="242468" started-at="2019-12-04T18:23:32 IST" finished-at="2019-12-04T18:27:35 IST">
+      <class name="com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest">
+        <test-method status="PASS" signature="setUpBeforeClass()[pri:0, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="setUpBeforeClass" is-config="true" duration-ms="15" started-at="2019-12-04T18:23:32 IST" finished-at="2019-12-04T18:23:32 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpBeforeClass -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.training.MediumTestCases.tests.TC04RealEstate_ViewUsersTest@22a67b4]" name="setUp" is-config="true" duration-ms="25909" started-at="2019-12-03T13:46:27 IST" finished-at="2019-12-03T13:46:53 IST">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="setUp" is-config="true" duration-ms="48438" started-at="2019-12-04T18:23:33 IST" finished-at="2019-12-04T18:24:22 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="addAndViewUsers(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:com.training.MediumTestCases.tests.TC04RealEstate_ViewUsersTest@22a67b4]" name="addAndViewUsers" duration-ms="26306" started-at="2019-12-03T13:46:53 IST" data-provider="xlsx-input-sheet3" finished-at="2019-12-03T13:47:19 IST">
+        <test-method status="PASS" signature="checkUser(java.lang.String, java.lang.String, java.lang.String)[pri:2, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="checkUser" duration-ms="10920" started-at="2019-12-04T18:24:22 IST" data-provider="xlsx-input-sheet6" finished-at="2019-12-04T18:24:32 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[Test1234]]>
+                <![CDATA[manzoortest]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[Test1234@gmail.com]]>
+                <![CDATA[mehadi]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[Tester]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[Tester]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[www.gmail.com]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[Runfast7#123]]>
+                <![CDATA[mehadi]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- addAndViewUsers -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.training.MediumTestCases.tests.TC04RealEstate_ViewUsersTest@22a67b4]" name="tearDown" is-config="true" duration-ms="744" started-at="2019-12-03T13:47:19 IST" finished-at="2019-12-03T13:47:20 IST">
+        </test-method> <!-- checkUser -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="tearDown" is-config="true" duration-ms="767" started-at="2019-12-04T18:24:32 IST" finished-at="2019-12-04T18:24:33 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.training.MediumTestCases.tests.TC04RealEstate_ViewUsersTest -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="setUp" is-config="true" duration-ms="45594" started-at="2019-12-04T18:24:33 IST" finished-at="2019-12-04T18:25:19 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="checkUser(java.lang.String, java.lang.String, java.lang.String)[pri:2, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="checkUser" duration-ms="10066" started-at="2019-12-04T18:25:19 IST" data-provider="xlsx-input-sheet6" finished-at="2019-12-04T18:25:29 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[a@b]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[mariya]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[56547.0]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkUser -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="tearDown" is-config="true" duration-ms="835" started-at="2019-12-04T18:25:29 IST" finished-at="2019-12-04T18:25:30 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="setUp" is-config="true" duration-ms="45996" started-at="2019-12-04T18:25:30 IST" finished-at="2019-12-04T18:26:16 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="checkUser(java.lang.String, java.lang.String, java.lang.String)[pri:2, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="checkUser" duration-ms="12180" started-at="2019-12-04T18:26:16 IST" data-provider="xlsx-input-sheet6" finished-at="2019-12-04T18:26:28 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[alex123]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[76765.0]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[alex123]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkUser -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="tearDown" is-config="true" duration-ms="750" started-at="2019-12-04T18:26:28 IST" finished-at="2019-12-04T18:26:29 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="setUp" is-config="true" duration-ms="53827" started-at="2019-12-04T18:26:29 IST" finished-at="2019-12-04T18:27:22 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="checkUser(java.lang.String, java.lang.String, java.lang.String)[pri:2, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="checkUser" duration-ms="11640" started-at="2019-12-04T18:27:22 IST" data-provider="xlsx-input-sheet6" finished-at="2019-12-04T18:27:34 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[a.b.c]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[76578.0]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[vandana]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkUser -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="tearDown" is-config="true" duration-ms="833" started-at="2019-12-04T18:27:34 IST" finished-at="2019-12-04T18:27:35 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
