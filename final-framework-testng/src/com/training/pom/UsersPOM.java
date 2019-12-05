@@ -96,9 +96,17 @@ public class UsersPOM {
 		String actual=(driver.findElement(By.xpath("/html/body/div/div[2]/div[2]/div[1]/div[3]/div[2]/p"))).getText();
 		Assert.verify(actual.contains(expected));
 	 
-		element= driver.findElement(By.xpath("//*[@id='wp-admin-bar-my-account']/a/img"));
-    	action.moveToElement(element).build().perform();
-    	this.logout.click();
+		
+    	
+    	
+   }
+   public void logout()
+   {
+	   Actions action = new Actions(driver);
+	  WebElement element= driver.findElement(By.xpath("//*[@id='wp-admin-bar-my-account']/a/img"));
+   	action.moveToElement(element).build().perform();
+   	this.logout.click();
+	   
    }
    public void searchUser_notexist(String userNm)
    {

@@ -1,133 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
+<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="242468" started-at="2019-12-04T18:23:32 IST" finished-at="2019-12-04T18:27:35 IST">
+  <suite name="Default suite" duration-ms="77651" started-at="2019-12-05T11:44:28 IST" finished-at="2019-12-05T11:45:46 IST">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="242468" started-at="2019-12-04T18:23:32 IST" finished-at="2019-12-04T18:27:35 IST">
-      <class name="com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest">
-        <test-method status="PASS" signature="setUpBeforeClass()[pri:0, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="setUpBeforeClass" is-config="true" duration-ms="15" started-at="2019-12-04T18:23:32 IST" finished-at="2019-12-04T18:23:32 IST">
+    <test name="Default test" duration-ms="77651" started-at="2019-12-05T11:44:28 IST" finished-at="2019-12-05T11:45:46 IST">
+      <class name="com.training.ComplexTestCases.tests.RETC064_UsersInquiry_NewLaunchTest">
+        <test-method status="PASS" signature="setUpBeforeClass()[pri:0, instance:com.training.ComplexTestCases.tests.RETC064_UsersInquiry_NewLaunchTest@22a67b4]" name="setUpBeforeClass" is-config="true" duration-ms="36632" started-at="2019-12-05T11:44:28 IST" finished-at="2019-12-05T11:45:05 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpBeforeClass -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="setUp" is-config="true" duration-ms="48438" started-at="2019-12-04T18:23:33 IST" finished-at="2019-12-04T18:24:22 IST">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.training.ComplexTestCases.tests.RETC064_UsersInquiry_NewLaunchTest@22a67b4]" name="setUp" is-config="true" duration-ms="1" started-at="2019-12-05T11:45:06 IST" finished-at="2019-12-05T11:45:06 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="checkUser(java.lang.String, java.lang.String, java.lang.String)[pri:2, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="checkUser" duration-ms="10920" started-at="2019-12-04T18:24:22 IST" data-provider="xlsx-input-sheet6" finished-at="2019-12-04T18:24:32 IST">
+        <test-method status="PASS" signature="NewLaunchInquiry(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:com.training.ComplexTestCases.tests.RETC064_UsersInquiry_NewLaunchTest@22a67b4]" name="NewLaunchInquiry" duration-ms="22307" started-at="2019-12-05T11:45:06 IST" data-provider="xlsx-input-sheet7" finished-at="2019-12-05T11:45:28 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[manzoortest]]>
+                <![CDATA[manzoor mehadi]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[mehadi]]>
+                <![CDATA[manzoor@gmail.com]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[mehadi]]>
+                <![CDATA[apartments]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[looking for an apartments]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- checkUser -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="tearDown" is-config="true" duration-ms="767" started-at="2019-12-04T18:24:32 IST" finished-at="2019-12-04T18:24:33 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="setUp" is-config="true" duration-ms="45594" started-at="2019-12-04T18:24:33 IST" finished-at="2019-12-04T18:25:19 IST">
+        </test-method> <!-- NewLaunchInquiry -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.training.ComplexTestCases.tests.RETC064_UsersInquiry_NewLaunchTest@22a67b4]" name="setUp" is-config="true" duration-ms="2" started-at="2019-12-05T11:45:28 IST" finished-at="2019-12-05T11:45:28 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="checkUser(java.lang.String, java.lang.String, java.lang.String)[pri:2, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="checkUser" duration-ms="10066" started-at="2019-12-04T18:25:19 IST" data-provider="xlsx-input-sheet6" finished-at="2019-12-04T18:25:29 IST">
+        <test-method status="PASS" signature="NewLaunchInquiry(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:com.training.ComplexTestCases.tests.RETC064_UsersInquiry_NewLaunchTest@22a67b4]" name="NewLaunchInquiry" duration-ms="7704" started-at="2019-12-05T11:45:28 IST" data-provider="xlsx-input-sheet7" finished-at="2019-12-05T11:45:36 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[a@b]]>
+                <![CDATA[alex hales]]>
               </value>
             </param>
             <param index="1">
+              <value>
+                <![CDATA[alex@gmail.com]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Plots]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[looking for an plots]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- NewLaunchInquiry -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.training.ComplexTestCases.tests.RETC064_UsersInquiry_NewLaunchTest@22a67b4]" name="setUp" is-config="true" duration-ms="1" started-at="2019-12-05T11:45:36 IST" finished-at="2019-12-05T11:45:36 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="NewLaunchInquiry(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:com.training.ComplexTestCases.tests.RETC064_UsersInquiry_NewLaunchTest@22a67b4]" name="NewLaunchInquiry" duration-ms="9582" started-at="2019-12-05T11:45:36 IST" data-provider="xlsx-input-sheet7" finished-at="2019-12-05T11:45:45 IST">
+          <params>
+            <param index="0">
               <value>
                 <![CDATA[mariya]]>
               </value>
             </param>
-            <param index="2">
-              <value>
-                <![CDATA[56547.0]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- checkUser -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="tearDown" is-config="true" duration-ms="835" started-at="2019-12-04T18:25:29 IST" finished-at="2019-12-04T18:25:30 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="setUp" is-config="true" duration-ms="45996" started-at="2019-12-04T18:25:30 IST" finished-at="2019-12-04T18:26:16 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="checkUser(java.lang.String, java.lang.String, java.lang.String)[pri:2, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="checkUser" duration-ms="12180" started-at="2019-12-04T18:26:16 IST" data-provider="xlsx-input-sheet6" finished-at="2019-12-04T18:26:28 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[alex123]]>
-              </value>
-            </param>
             <param index="1">
               <value>
-                <![CDATA[76765.0]]>
+                <![CDATA[mariya@gmail.com]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[alex123]]>
+                <![CDATA[Vilas]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[looking for an vila]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- checkUser -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="tearDown" is-config="true" duration-ms="750" started-at="2019-12-04T18:26:28 IST" finished-at="2019-12-04T18:26:29 IST">
+        </test-method> <!-- NewLaunchInquiry -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.training.ComplexTestCases.tests.RETC064_UsersInquiry_NewLaunchTest@22a67b4]" name="tearDown" is-config="true" duration-ms="790" started-at="2019-12-05T11:45:45 IST" finished-at="2019-12-05T11:45:46 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="setUp" is-config="true" duration-ms="53827" started-at="2019-12-04T18:26:29 IST" finished-at="2019-12-04T18:27:22 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="checkUser(java.lang.String, java.lang.String, java.lang.String)[pri:2, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="checkUser" duration-ms="11640" started-at="2019-12-04T18:27:22 IST" data-provider="xlsx-input-sheet6" finished-at="2019-12-04T18:27:34 IST">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[a.b.c]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[76578.0]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[vandana]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- checkUser -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest@22a67b4]" name="tearDown" is-config="true" duration-ms="833" started-at="2019-12-04T18:27:34 IST" finished-at="2019-12-04T18:27:35 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest -->
+      </class> <!-- com.training.ComplexTestCases.tests.RETC064_UsersInquiry_NewLaunchTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -19,19 +20,21 @@ import com.training.pom.DashboardAdminPOM;
 import com.training.pom.EditPropertyPOM;
 import com.training.pom.NewPropertyPOM;
 import com.training.pom.RegistrationPOM;
+import com.training.pom.UsersPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
 public class RETC061andRETC062_RegisterViewMultipleUsersTest {
 	
-	private WebDriver driver;
+	private static WebDriver driver;
 	private String baseUrl;
 	private static Properties properties;
 	private ScreenShot screenShot;
-	private BaseurlHomePOM homepgpom;
+	private static BaseurlHomePOM homepgpom;
 	private RegistrationPOM registerationpg;
 	private AdminLoginPOM adminloginpg;
 	private DashboardAdminPOM admindprofilepg;
+	private UsersPOM userspg;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws IOException
@@ -40,29 +43,32 @@ public class RETC061andRETC062_RegisterViewMultipleUsersTest {
 		properties = new Properties();
 		FileInputStream inStream = new FileInputStream("./resources/others.properties");
 		properties.load(inStream);
+		driver = DriverFactory.getDriver(DriverNames.CHROME);
+		//Initializing home page
+		homepgpom= new BaseurlHomePOM(driver);
+		
+		
+		//Reading base url from properties file
+	final String	baseUrl = properties.getProperty("baseURL");
+		
+		//  Opening home page for Retail application in browser
+		driver.get(baseUrl);
+		//Verify if Login/Register Link is being displayed on home page and click on that link
+				homepgpom.loginOrRegisterlnktest();
 	}
 
 	@BeforeMethod
 	public void setUp() throws Exception 
 	{
-		driver = DriverFactory.getDriver(DriverNames.CHROME);
 		//Initializing all web pages
-		homepgpom= new BaseurlHomePOM(driver);
 		registerationpg= new RegistrationPOM(driver);
 		adminloginpg= new AdminLoginPOM(driver);
 		admindprofilepg= new DashboardAdminPOM(driver);
-		
-		//Reading base url from properties file
-		baseUrl = properties.getProperty("baseURL");
-		screenShot = new ScreenShot(driver); 
-		//  Opening home page for Retail application in browser
-		driver.get(baseUrl);
-		//Verify if Login/Register Link is being displayed on home page and click on that link
-				homepgpom.loginOrRegisterlnktest();
+		userspg= new UsersPOM(driver);
 		
 	}
 	
-	@AfterMethod
+	@AfterClass
 	public void tearDown() throws Exception
 	{
 			
@@ -82,16 +88,12 @@ driver.quit();
 				registerationpg.RegisterUser(emailid,firstName,lastName);
 				//Validating successful registration message on screen
 				registerationpg.validLoginDetails();
-				//Navigating to Registration tab
-				registerationpg.registerTabClick();
-				//Validating that user already registered is not allowed to register again
-				registerationpg.RegisterUser(emailid,firstName,lastName);
-				registerationpg.InvalidRegistrationDetails();
+				
 				
 	}
 	
-	//Admin login to application
-	@Test(priority=3)
+	// Now Admin login to application 
+	@Test(priority=2)
 	public void AdminLogin()
 	{
 		driver.get(properties.getProperty("adminURL"));
@@ -100,19 +102,13 @@ driver.quit();
 		adminloginpg.adminLoginTest(adminUserName, adminPwd);
 	}
 	
-//Admin deletes the users which are registered.User details are read from excel file via Data providers
-	@Test (priority=4, dataProvider = "xlsx-input-sheet1", dataProviderClass = LoginDataProviders.class )
-		public void DeleteUsers(String emailid,String firstName,String lastName) throws InterruptedException, IOException
-	{
-		//deleting the user from admin profile page
-		admindprofilepg.userDeletion(emailid);
-		//cleaning up the browser
-    }
 	
-	//Admin verify the user details .
-		@Test (priority=2, dataProvider = "xlsx-input-sheet1", dataProviderClass = LoginDataProviders.class )
-		public void viewUserDetails()
+	//Admin verify that  users registered in 1st test method exists in users page and  deletes that user for cleaning up
+		@Test (priority=3, dataProvider = "xlsx-input-sheet1", dataProviderClass = LoginDataProviders.class )
+		public void viewUserDetails(String emailid,String firstName,String lastName)
 		{
-			
+			admindprofilepg.userLnkclick();
+			userspg.searchUser(emailid);
+			userspg.deleteUser(emailid);
 		}
 }

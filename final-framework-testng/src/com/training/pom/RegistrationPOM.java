@@ -45,8 +45,8 @@ private WebElement lastNm;
 private WebElement registerBtn;
 
 //Registration tab link
- @FindBy(xpath="/html[1]/body[1]/div[1]/div[4]/div[1]/article[1]/div[1]/div[1]/div[1]/ul[1]/li[2]/a[1]")
- private WebElement registerLnk;
+ @FindBy(linkText="Register")
+ private WebElement registertabLnk;
 
  //Invalid emailId message
  
@@ -67,6 +67,10 @@ public void RegisterUser(String emailid,String firstNM,String lastNM) throws Int
 	  //  true && true
 	if(!(emailid.contains("@")) && !(emailid.contains(".")))
 			{
+		WebElement element=driver.findElement(By.xpath("//p[contains(text(),'The email address you entered is not valid.')]"));
+		String expected="The email address you entered is not valid.";
+		String actual=element.getText();
+		assertEquals(actual, expected);
 		Assert.verify(this.invalidEmailmessage.isDisplayed());
 			}
 	
@@ -102,7 +106,7 @@ public void InvalidRegistrationDetails()
 	}
 	public void registerTabClick()
 	{
-		 this.registerLnk.click();
+		 this.registertabLnk.click();
 	}
 	
 }

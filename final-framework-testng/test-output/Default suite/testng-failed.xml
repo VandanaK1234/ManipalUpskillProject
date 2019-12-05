@@ -3,14 +3,16 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.training.ComplexTestCases.tests.RETC064_UsersInquiry_NewLaunchTest">
+      <class name="com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest">
         <methods>
-          <include name="NewLaunchInquiry"/>
+          <include name="AdminLogin"/>
+          <include name="tearDown"/>
+          <include name="registerMultipleInvalidUsers"/>
           <include name="setUpBeforeClass"/>
           <include name="setUp"/>
-          <include name="tearDown"/>
+          <include name="checkUser"/>
         </methods>
-      </class> <!-- com.training.ComplexTestCases.tests.RETC064_UsersInquiry_NewLaunchTest -->
+      </class> <!-- com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
