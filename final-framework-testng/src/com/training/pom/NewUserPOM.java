@@ -1,10 +1,13 @@
 package com.training.pom;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import common.Assert;
 
@@ -60,8 +63,11 @@ public class NewUserPOM
 	@FindBy(id="createusersub")
 	WebElement createUserBtn;
 	
+	@FindBy(xpath="//p[contains(text(),': The email address isn')]")
+	WebElement confirmationtext;
+	
 	//adding details for new user
-	public void addNewUser(String userNm,String email,String firstNm,String lastNm,String url,String pwd)
+	public void addNewUser(String userNm,String email,String firstNm,String lastNm,String url,String pwd,String role)
 	{
 		this.userName.clear();
 		this.userName.sendKeys(userNm);
@@ -78,10 +84,21 @@ public class NewUserPOM
 		this.pwdTxt.sendKeys(pwd);
 		Assert.verify(this.hideBtn.isDisplayed());
 		Assert.verify(this.cancelBtn.isDisplayed());
+		if(role!=null)
+		{
 		Select select1= new Select(this.roleSelect);
-		select1.selectByVisibleText("Agent");
+		select1.selectByVisibleText(role);
+		}
 		this.createUserBtn.click();
 		
+	}
+	public void IncorrectEmailidMsg()
+	{
+		WebDriverWait wait= new WebDriverWait(driver,3000);
+		ExpectedConditions.presenceOfElementLocated(By.xpath("//p[contains(text(),': The email address isn')]"));
+		String actualMsg=this.confirmationtext.getText();
+		//assertEquals(actualMsg,"There was an error trying to send your message.");
+		Assert.verify(actualMsg.contains("The email address isn’t correct"));
 	}
 
 }

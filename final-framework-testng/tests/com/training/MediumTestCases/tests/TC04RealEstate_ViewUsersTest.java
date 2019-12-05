@@ -72,7 +72,7 @@ public class TC04RealEstate_ViewUsersTest {
 	}
 		
 		@Test (dataProvider = "xlsx-input-sheet3", dataProviderClass = LoginDataProviders.class)
-				public void addAndViewUsers(String userNm,String email,String firstNm,String lastNm,String url,String pwd)
+				public void addAndViewUsers(String userNm,String email,String firstNm,String lastNm,String url,String pwd,String role)
 		{
 			
 			//Admin login
@@ -88,7 +88,7 @@ public class TC04RealEstate_ViewUsersTest {
 				//Clicking add user to add new user
 			admin_userspg.addUser();
 			//Entering details for new user
-			newuserpg.addNewUser(userNm, email, firstNm, lastNm, url, pwd);
+			newuserpg.addNewUser(userNm, email, firstNm, lastNm, url, pwd,role);
 			//Validating if user is created
 			admin_userspg.validateuserCreation();
 					
