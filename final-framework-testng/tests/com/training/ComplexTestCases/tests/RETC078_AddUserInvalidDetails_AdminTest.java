@@ -36,30 +36,24 @@ public class RETC078_AddUserInvalidDetails_AdminTest {
 	public static void setUpBeforeClass() throws IOException
 	{
 		//Loading the property file to be referred later in test case
-				properties = new Properties();
-				FileInputStream inStream = new FileInputStream("./resources/others.properties");
-				properties.load(inStream);
-				driver = DriverFactory.getDriver(DriverNames.CHROME);
-				//Initializing home page
-							
-				String adminurl = properties.getProperty("adminURL");
+		properties = new Properties();
+		FileInputStream inStream = new FileInputStream("./resources/others.properties");
+		properties.load(inStream);
+		driver = DriverFactory.getDriver(DriverNames.CHROME);
+		//Initializing home page
+		String adminurl = properties.getProperty("adminURL");
 		//  Opening admin login page for Retail application in browser
-		driver.get(adminurl);
-		
-		
+		driver.get(adminurl);	
 	}
 
 	@BeforeMethod
-	public void setUp() throws Exception {
-		//Initializing all web pages
+	public void setUp() throws Exception
+	{
+		//Initializing remaining web pages
 		dashboardadminpg= new DashboardAdminPOM(driver);
 		adminloginpg=new AdminLoginPOM(driver);
 		admin_userspg= new UsersPOM(driver);
-		newuserpg= new NewUserPOM(driver);
-				
-		
-		
-		
+		newuserpg= new NewUserPOM(driver);		
 	}
 	
 	@AfterClass
@@ -82,19 +76,17 @@ public class RETC078_AddUserInvalidDetails_AdminTest {
 	
 		@Test (priority=2, dataProvider = "xlsx-input-sheet8", dataProviderClass = LoginDataProviders.class)
 		public void addAndViewUsers(String userNm,String email,String firstNm,String lastNm,String url,String pwd,String role)
-		{
-			
+		{			
 			
 			//Clicking users link
 			dashboardadminpg.userLnkclick();
-				admin_userspg.validateScreen();
-				//Clicking add user to add new user
+			admin_userspg.validateScreen();
+			//Clicking adduser link to add new user
 			admin_userspg.addUser();
-			//Entering details for new user
+			//Entering invalid details for new user
 			newuserpg.addNewUser(userNm, email, firstNm, lastNm, url, pwd,role);
-			//Validating if user is created
-			newuserpg.IncorrectEmailidMsg();
-					
+			//Validating if user is not created and error message is displayed on screen.
+			newuserpg.IncorrectEmailidMsg();					
 			
 		}
 	

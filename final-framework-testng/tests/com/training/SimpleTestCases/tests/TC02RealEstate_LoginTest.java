@@ -56,7 +56,6 @@ public class TC02RealEstate_LoginTest {
 		homepgpom = new BaseurlHomePOM(driver); 
 		
 		baseUrl = properties.getProperty("baseURL");
-		screenShot = new ScreenShot(driver); 
 		// open the base url of Retail application in browser
 		driver.get(baseUrl);
 		baseloginpom= new BaseLoginPOM(driver);
@@ -67,12 +66,12 @@ public class TC02RealEstate_LoginTest {
 		
 		//Verify if Login/Register Link is being displayed on home page and click on that link
 				homepgpom.loginOrRegisterlnktest();
-				// Verifying field details on Registration screen
-				registerationpg.validateRegistrationScreen();
+				
 				//Registering new user
 				String emailid=properties.getProperty("userID");
 				String firstName=properties.getProperty("firstNm");
 				String lastName=properties.getProperty("lastNm");
+				registerationpg.registerTabClick();
 				registerationpg.RegisterUser(emailid,firstName,lastName);
 				//Validating successful registration message on screen
 				registerationpg.validLoginDetails();

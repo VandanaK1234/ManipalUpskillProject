@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 
+import org.testng.ITestContext;
 import org.testng.annotations.DataProvider;
 
 import com.training.bean.LoginBean;
@@ -37,77 +38,63 @@ public class LoginDataProviders {
 	}
 	
 	@DataProvider(name = "xlsx-input-sheet1")
-	public Object[][] getExcelData1stsheet() throws IOException
+	public Object[][] getExcelData1stsheet(ITestContext context) throws IOException
 	{ 
-		Properties  properties = new Properties();
-		FileInputStream inStream = new FileInputStream("C:\\Users\\VandanaKapoor\\git\\ManipalUpskillProject\\final-framework-testng\\resources\\others.properties");
-		properties.load(inStream);
-		String path= properties.getProperty("dataFilePath");
-		return new ApachePOIExcelRead().getExcelContentsheet(path,0); 
+		String path=context.getCurrentXmlTest().getParameter("path");
+		String sheetname=context.getCurrentXmlTest().getParameter("sheetname1");
+		return new ApachePOIExcelRead().getExcelContentsheet(path,sheetname);
+		 
 	}
 	
 	@DataProvider(name = "xlsx-input-sheet2")
-	public Object[][] getExcelData2ndsheet() throws IOException
-	{Properties  properties = new Properties();
-	FileInputStream inStream = new FileInputStream("C:\\Users\\VandanaKapoor\\git\\ManipalUpskillProject\\final-framework-testng\\resources\\others.properties");
-	properties.load(inStream);
-	
-		String path= properties.getProperty("dataFilePath");
-		return new ApachePOIExcelRead().getExcelContentsheet(path,1); 
+	public Object[][] getExcelData2ndsheet(ITestContext context) throws IOException
+	{
+		String path=context.getCurrentXmlTest().getParameter("path");
+	String sheetname=context.getCurrentXmlTest().getParameter("sheetname2");
+	return new ApachePOIExcelRead().getExcelContentsheet(path,sheetname); 
 	}
-	@DataProvider(name = "xlsx-input-sheet3")
-	public Object[][] getExcelData3rdsheet() throws IOException
-	{Properties  properties = new Properties();
-	FileInputStream inStream = new FileInputStream("C:\\Users\\VandanaKapoor\\git\\ManipalUpskillProject\\final-framework-testng\\resources\\others.properties");
-	properties.load(inStream);
 	
-		String path= properties.getProperty("dataFilePath");
-		return new ApachePOIExcelRead().getExcelContentsheet(path,2); 
+	@DataProvider(name = "xlsx-input-sheet3")
+	public Object[][] getExcelData3rdsheet(ITestContext context) throws IOException
+	{
+		String path=context.getCurrentXmlTest().getParameter("path");
+	String sheetname=context.getCurrentXmlTest().getParameter("sheetname3");
+	return new ApachePOIExcelRead().getExcelContentsheet(path,sheetname); 
 	}
 	@DataProvider(name = "xlsx-input-sheet4")
-	public Object[][] getExcelData4thsheet() throws IOException
+	public Object[][] getExcelData4thsheet(ITestContext context) throws IOException
 	{
-		Properties  properties = new Properties();
-		FileInputStream inStream = new FileInputStream("C:\\Users\\VandanaKapoor\\git\\ManipalUpskillProject\\final-framework-testng\\resources\\others.properties");
-		properties.load(inStream);
-		String path= properties.getProperty("dataFilePath");
-		return new ApachePOIExcelRead().getExcelContentsheet(path,3); 
+		String path=context.getCurrentXmlTest().getParameter("path");
+		String sheetname=context.getCurrentXmlTest().getParameter("sheetname4");
+		return new ApachePOIExcelRead().getExcelContentsheet(path,sheetname); 
 	}
 	@DataProvider(name = "xlsx-input-sheet5")
-	public Object[][] getExcelData5thsheet() throws IOException
+	public Object[][] getExcelData5thsheet(ITestContext context) throws IOException
 	{
-		Properties  properties = new Properties();
-		FileInputStream inStream = new FileInputStream("C:\\Users\\VandanaKapoor\\git\\ManipalUpskillProject\\final-framework-testng\\resources\\others.properties");
-		properties.load(inStream);
-		String path= properties.getProperty("dataFilePath");
-		return new ApachePOIExcelRead().getExcelContentsheet(path,4); 
+		String path=context.getCurrentXmlTest().getParameter("path");
+		String sheetname=context.getCurrentXmlTest().getParameter("sheetname5");
+		return new ApachePOIExcelRead().getExcelContentsheet(path,sheetname); 
 	}
 	@DataProvider(name = "xlsx-input-sheet6")
-	public Object[][] getExcelData6thsheet() throws IOException
+	public Object[][] getExcelData6thsheet(ITestContext context) throws IOException
 	{
-		Properties  properties = new Properties();
-		FileInputStream inStream = new FileInputStream("C:\\Users\\VandanaKapoor\\git\\ManipalUpskillProject\\final-framework-testng\\resources\\others.properties");
-		properties.load(inStream);
-		String path= properties.getProperty("dataFilePath");
-		return new ApachePOIExcelRead().getExcelContentsheet(path,5); 
+		String path=context.getCurrentXmlTest().getParameter("path");
+		String sheetname=context.getCurrentXmlTest().getParameter("sheetname6");
+		return new ApachePOIExcelRead().getExcelContentsheet(path,sheetname); 
 	}
 	@DataProvider(name = "xlsx-input-sheet7")
-	public Object[][] getExcelData7thsheet() throws IOException
+	public Object[][] getExcelData7thsheet(ITestContext context) throws IOException
 	{
-		Properties  properties = new Properties();
-		FileInputStream inStream = new FileInputStream("C:\\Users\\VandanaKapoor\\git\\ManipalUpskillProject\\final-framework-testng\\resources\\others.properties");
-		properties.load(inStream);
-		String path= properties.getProperty("dataFilePath");
-		return new ApachePOIExcelRead().getExcelContentsheet(path,6); 
+		String path=context.getCurrentXmlTest().getParameter("path");
+		String sheetname=context.getCurrentXmlTest().getParameter("sheetname7");
+		return new ApachePOIExcelRead().getExcelContentsheet(path,sheetname); 
 	}
 	@DataProvider(name = "xlsx-input-sheet8")
-	public Object[][] getExcelData8thsheet() throws IOException
+	public Object[][] getExcelData8thsheet(ITestContext context) throws IOException
 	{
-		Properties  properties = new Properties();
-		FileInputStream inStream = new FileInputStream("C:\\Users\\VandanaKapoor\\git\\ManipalUpskillProject\\final-framework-testng\\resources\\others.properties");
-		properties.load(inStream);
-		String path= properties.getProperty("dataFilePath");
-		return new ApachePOIExcelRead().getExcelContentsheet(path,7); 
+		String path=context.getCurrentXmlTest().getParameter("path");
+		String sheetname=context.getCurrentXmlTest().getParameter("sheetname8");
+		return new ApachePOIExcelRead().getExcelContentsheet(path,sheetname); 
 	}
 	@DataProvider(name = "xls-inputs")
 	public Object[][] getXLSData(){

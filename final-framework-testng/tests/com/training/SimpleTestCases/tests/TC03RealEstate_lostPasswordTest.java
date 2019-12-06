@@ -62,12 +62,11 @@ public class TC03RealEstate_lostPasswordTest {
 						   
 	  //Verify if Login/Register Link is being displayed on home page and click on that link
 		homepgpom.loginOrRegisterlnktest();
-		// Verifying field details on Registration screen
-		registerationpg.validateRegistrationScreen();
 		//Registering new user
 		String emailid=properties.getProperty("userID");
 		String firstName=properties.getProperty("firstNm");
 		String lastName=properties.getProperty("lastNm");
+		registerationpg.registerTabClick();
 		registerationpg.RegisterUser(emailid,firstName,lastName);
 		//Validating successful registration message on screen
 		registerationpg.validLoginDetails();

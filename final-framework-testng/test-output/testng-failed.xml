@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
-  <test thread-count="5" name="Default test(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Sample test Suite]">
+  <test thread-count="5" name="Sample test(failed)">
+    <parameter name="path" value=".\\resources\\RetailTestcasesData.xlsx"/>
+    <parameter name="sheetname1" value="UserValidRegistration"/>
+    <parameter name="sheetname6" value="UserInvalidRegistration"/>
+    <parameter name="sheetname7" value="DonecInquiry"/>
+    <parameter name="sheetname8" value="UsersIncorrectDetails"/>
+    <parameter name="sheetname2" value="UserLogin"/>
+    <parameter name="sheetname3" value="UsersAdminData"/>
+    <parameter name="sheetname4" value="NewpropertyDetails"/>
+    <parameter name="sheetname5" value="InquireMortgatgeCalc"/>
     <classes>
-      <class name="com.training.ComplexTestCases.tests.RETC078_AddUserInvalidDetails_AdminTest">
+      <class name="com.training.SimpleTestCases.tests.TC01RealEstate_RegisterUserTest">
         <methods>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-          <include name="addAndViewUsers" invocation-numbers="2"/>
           <include name="setUpBeforeClass"/>
+          <include name="setUp"/>
+          <include name="viewUserDetails"/>
+          <include name="validLoginTest"/>
+          <include name="adminLogin"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- com.training.ComplexTestCases.tests.RETC078_AddUserInvalidDetails_AdminTest -->
+      </class> <!-- com.training.SimpleTestCases.tests.TC01RealEstate_RegisterUserTest -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- Sample test(failed) -->
+</suite> <!-- Failed suite [Sample test Suite] -->

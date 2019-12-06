@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -18,62 +19,66 @@ import com.training.pom.AdminLoginPOM;
 import com.training.pom.BaseLoginPOM;
 import com.training.pom.RegistrationPOM;
 import com.training.pom.UserProfilePOM;
+import com.training.pom.UsersPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
 public class TC01RealEstate_RegisterUserTest {
-	private WebDriver driver;
-	private String baseUrl;
+	private static WebDriver driver;
+	private static String baseUrl;
 		private static Properties properties;
 	private ScreenShot screenShot;
-	private BaseurlHomePOM homepgpom;
-	private RegistrationPOM registerationpg;
+	private static BaseurlHomePOM homepgpom;
+	private static RegistrationPOM registerationpg;
 	private AdminLoginPOM adminloginpg;
 	private DashboardAdminPOM admindprofilepg;
+	private UsersPOM userspg;
 	
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws IOException
 	{
+		//Loading the property file to be referred later in test case
 		properties = new Properties();
 		FileInputStream inStream = new FileInputStream("./resources/others.properties");
 		properties.load(inStream);
+		driver = DriverFactory.getDriver(DriverNames.CHROME);
+		//Initializing home page
+		homepgpom= new BaseurlHomePOM(driver);
+			
+		//Reading base url from properties file
+	final String	baseUrl = properties.getProperty("baseURL");
+		
+		//  Opening home page for Retail application in browser
+		driver.get(baseUrl);
+		//Verify if Login/Register Link is being displayed on home page and click on that link
+				homepgpom.loginOrRegisterlnktest();
 	}
 
 	@BeforeMethod
-	public void setUp() throws Exception {
-		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		homepgpom = new BaseurlHomePOM(driver); 
-		baseUrl = properties.getProperty("baseURL");
-		screenShot = new ScreenShot(driver); 
-		//  Opening home page for Retail application in browser
-		driver.get(baseUrl);
-		//adding some wait time to load the page
+	public void setUp() throws Exception 
+	{
+		//Initializing all web pages
 		registerationpg= new RegistrationPOM(driver);
-		adminloginpg=new AdminLoginPOM(driver);
+		adminloginpg= new AdminLoginPOM(driver);
 		admindprofilepg= new DashboardAdminPOM(driver);
+		userspg= new UsersPOM(driver);
+		
+		
 	}
 	
-	@AfterMethod
-	public void tearDown() throws Exception {
-		//Read userId for deletion from repository
-				String userid=properties.getProperty("userID");
-		//Login to admin page and  delete the registered user.
-		driver.get(properties.getProperty("adminURL"));
-	String	adminUserName=properties.getProperty("adminID");
-	String adminPwd=properties.getProperty("adminpwd");
-		adminloginpg.adminLoginTest(adminUserName, adminPwd);
-			//deleting the user from admin profile page
-		admindprofilepg.userDeletion(userid);
-		//cleaning up the browser
-		driver.quit();
+	@AfterClass
+	public void tearDown() throws Exception
+	{
+			
+driver.quit();
+	
 	}
-	@Test (dataProvider = "xlsx-input-sheet1", dataProviderClass = LoginDataProviders.class)
+	@Test (priority=1, dataProvider = "xlsx-input-sheet1", dataProviderClass = LoginDataProviders.class)
 	public void validLoginTest(String emailid,String firstName,String lastName) throws InterruptedException 
 	{   
 		
-		//Verify if Login/Register Link is being displayed on home page and click on that link
-		homepgpom.loginOrRegisterlnktest();
+		
 		//Navigating to Registration tab
 		registerationpg.registerTabClick();
 		// Verifying field details on Registration screen
@@ -82,12 +87,29 @@ public class TC01RealEstate_RegisterUserTest {
 		registerationpg.RegisterUser(emailid,firstName,lastName);
 		//Validating successful registration message on screen
 		registerationpg.validLoginDetails();
-		registerationpg.validateRegistrationScreen();
-		//Registering again the same user.
+				
+	}
+	
+	@Test(priority=2)
+	public void adminLogin()
+	{
+		//Read userId for deletion from repository
+		String userid=properties.getProperty("userID");
+//Login to admin page and  delete the registered user.
+driver.get(properties.getProperty("adminURL"));
+String	adminUserName=properties.getProperty("adminID");
+String adminPwd=properties.getProperty("adminpwd");
+adminloginpg.adminLoginTest(adminUserName, adminPwd);
+	
+	}
+	
+
+	@Test (priority=3, dataProvider = "xlsx-input-sheet1", dataProviderClass = LoginDataProviders.class )
+	public void viewUserDetails(String emailid,String firstName,String lastName) throws IOException
+	{
 		
-		registerationpg.RegisterUser(emailid,firstName,lastName);
-		//validate that user is not allowed to register again
-		registerationpg.InvalidRegistrationDetails();
-		
+		admindprofilepg.userLnkclick();
+		userspg.searchUser(emailid);
+		userspg.deleteUser(emailid);
 	}
 }

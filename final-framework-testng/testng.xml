@@ -2,9 +2,32 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name = "Sample test Suite">
+
    <test name = "Sample test">
-      <classes>
-         <class name = "com.training.sanity.tests.LoginTests" />
+      <parameter name="path" value=".\\resources\\RetailTestcasesData.xlsx"/>
+      <parameter name="sheetname1" value="UserValidRegistration"/>
+      <parameter name="sheetname2" value="UserLogin"/>
+      <parameter name="sheetname3" value="UsersAdminData"/>
+      <parameter name="sheetname4" value="NewpropertyDetails"/>
+      <parameter name="sheetname5" value="InquireMortgatgeCalc"/>
+      <parameter name="sheetname6" value="UserInvalidRegistration"/>
+      <parameter name="sheetname7" value="DonecInquiry"/>
+      <parameter name="sheetname8" value="UsersIncorrectDetails"/>
+    <classes>
+          <class name = "com.training.ComplexTestCases.tests.RETC061andRETC062_RegisterViewMultipleUsersTest" />  
+          <class name = "com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest" />
+          <class name = "com.training.ComplexTestCases.tests.RETC064_UsersInquiry_NewLaunchTest" />
+          <class name = "com.training.ComplexTestCases.tests.RETC078_AddUserInvalidDetails_AdminTest" />
+         
+         <class name = "com.training.MediumTestCases.tests.TC01RealEstate_AddAllPropertiesTest" />
+          <class name = "com.training.MediumTestCases.tests.TC02RealEstate_ViewEnquireNewLaunchTest" />
+          <class name = "com.training.MediumTestCases.tests.TC03RealEstate_ViewPropertyDetailsTest" />
+          <class name = "com.training.MediumTestCases.tests.TC04RealEstate_ViewUsersTest" />
+         
+          <class name = "com.training.SimpleTestCases.tests.TC01RealEstate_RegisterUserTest" />
+          <class name = "com.training.SimpleTestCases.tests.TC02RealEstate_LoginTest" />
+          <class name = "com.training.SimpleTestCases.tests.TC03RealEstate_lostPasswordTest" />
+          <class name = "com.training.SimpleTestCases.tests.TC04RealEstate_ProfileUpdateTest" />
       </classes>
    </test>
 </suite>	

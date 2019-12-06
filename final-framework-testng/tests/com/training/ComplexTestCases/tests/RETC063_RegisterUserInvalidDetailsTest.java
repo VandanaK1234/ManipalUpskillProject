@@ -31,7 +31,7 @@ public class RETC063_RegisterUserInvalidDetailsTest {
 	private AdminLoginPOM adminloginpg;
 	private DashboardAdminPOM admindprofilepg;
 	private UsersPOM userspg;
-	
+		
 	@BeforeClass
 	public static void setUpBeforeClass() throws IOException
 	{
@@ -61,29 +61,28 @@ public class RETC063_RegisterUserInvalidDetailsTest {
 		adminloginpg= new AdminLoginPOM(driver);
 		admindprofilepg= new DashboardAdminPOM(driver);
 		userspg= new UsersPOM(driver);
-		
-		
+			
 	}
 	
 	@AfterClass
 	public void tearDown() throws Exception
 	{
 			
-driver.quit();
+        driver.quit();
 	
 	}
-//Login to aplpication url and register multiple users.User data is read from excel file via data provider	
-	@Test (priority=1 , dataProvider = "xlsx-input-sheet6", dataProviderClass = LoginDataProviders.class )
+        //Login to aplpication url and register multiple users.User data is read from excel file via data provider	
+	    @Test (priority=1 , dataProvider = "xlsx-input-sheet6", dataProviderClass = LoginDataProviders.class )
 	
-	public void registerMultipleInvalidUsers(String emailid,String firstName,String lastName) throws InterruptedException
-	{
-		        // Verifying field details on Registration screen
+	    public void registerMultipleInvalidUsers(String emailid,String firstName,String lastName) throws InterruptedException, IOException
+	      {
+			    // Verifying field details on Registration screen
 				registerationpg.validateRegistrationScreen();
 				//Registering new user.User details are invalid so error message is displayed during registration.
 				registerationpg.RegisterUser(emailid,firstName,lastName);
 							
 				
-	}
+	    }
 	//Admin login to application
 		@Test(priority=2)
 		public void AdminLogin()
@@ -94,12 +93,12 @@ driver.quit();
 			adminloginpg.adminLoginTest(adminUserName, adminPwd);
 		}
 		//Admin validates that users trying to register with invalid details in 1st test method does not exists in users page
-	@Test (priority=3 , dataProvider = "xlsx-input-sheet6", dataProviderClass = LoginDataProviders.class )
-	public void checkUser(String emailid,String firstName,String lastName)
-	{
+	    @Test (priority=3 , dataProvider = "xlsx-input-sheet6", dataProviderClass = LoginDataProviders.class )
+	    public void checkUser(String emailid,String firstName,String lastName) throws IOException
+	   {      
 			admindprofilepg.userLnkclick();
 			userspg.searchUser_notexist(emailid);
 			
-	}
+	   }
 
 }

@@ -59,14 +59,14 @@ public class RETC064_UsersInquiry_NewLaunchTest
 	public void tearDown() throws Exception
 	{
 			
-driver.quit();
+        driver.quit();
 	
 	}
 
-//Multiple users inquire for Donec Quis apartment via Plots or New Launch section.  	
-	@Test (priority=1 , dataProvider = "xlsx-input-sheet7", dataProviderClass = LoginDataProviders.class )
-	public void NewLaunchInquiry(String name,String email,String subject, String message)
-	{
+       //Multiple users inquire for Donec Quis apartment via Plots or New Launch section in home page of application.	
+	   @Test (priority=1 , dataProvider = "xlsx-input-sheet7", dataProviderClass = LoginDataProviders.class )
+	   public void NewLaunchInquiry(String name,String email,String subject, String message)
+	   {
 		
 		homepgpom.newLaunchLnktest();
 		donecquispg.validateHeader();
@@ -75,5 +75,5 @@ driver.quit();
 		donecquispg.validateHeader();
 		donecquispg.sendInquiry(name, email, subject, message);
 		
-	}
+	  }
 }

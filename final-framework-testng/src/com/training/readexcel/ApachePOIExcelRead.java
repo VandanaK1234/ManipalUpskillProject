@@ -22,7 +22,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  *      access.
  */
 public class ApachePOIExcelRead {
-	public  String [][] getExcelContentsheet(String fileName,int sheetindex) {
+	public  String [][] getExcelContentsheet(String fileName,String sheetname) {
 		int rowCount =0; 
 		String [][] list1 = null; 
 		
@@ -35,7 +35,7 @@ public class ApachePOIExcelRead {
 
 			// Get first/desired sheet from the workbook
 			
-			XSSFSheet sheet = workbook.getSheetAt(sheetindex);
+			XSSFSheet sheet = workbook.getSheet(sheetname);
 			
 			int rowTotal = sheet.getLastRowNum();
 
