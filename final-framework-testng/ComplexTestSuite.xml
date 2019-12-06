@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+ <suite name="ComplexTestSuite">
+   <test thread-count="1" name="complextestcaseValidation">
+   <parameter name="path" value=".\\resources\\RetailTestcasesData.xlsx"/>
+      <parameter name="sheetname1" value="UserValidRegistration"/>
+      <parameter name="sheetname2" value="UserLogin"/>
+      <parameter name="sheetname3" value="UsersAdminData"/>
+      <parameter name="sheetname4" value="NewpropertyDetails"/>
+      <parameter name="sheetname5" value="InquireMortgatgeCalc"/>
+      <parameter name="sheetname6" value="UserInvalidRegistration"/>
+      <parameter name="sheetname7" value="DonecInquiry"/>
+      <parameter name="sheetname8" value="UsersIncorrectDetails"/>
+     <classes>
+       <class name = "com.training.ComplexTestCases.tests.RETC061andRETC062_RegisterViewMultipleUsersTest" />
+         <class name = "com.training.ComplexTestCases.tests.RETC063_RegisterUserInvalidDetailsTest" />
+         <class name = "com.training.ComplexTestCases.tests.RETC064_UsersInquiry_NewLaunchTest" />
+         <class name = "com.training.ComplexTestCases.tests.RETC078_AddUserInvalidDetails_AdminTest" />
+     </classes>
+   </test> <!-- complextestcaseValidation -->
+ </suite> <!-- ComplexTestSuite -->
